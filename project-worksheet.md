@@ -5,7 +5,7 @@
 Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and\or functionality
 
 ## Wireframes
-![alt text](http://res.cloudinary.com/dk1cgfxkn/image/upload/v1522188693/GA%20Project%201/Wireframes/20180327_171044.jpg)
+![Wireframe Image 01 - Whiteboard](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522188693/GA%20Project%201/Wireframes/20180327_171044.jpg)
 Include images of your wireframes. 
 
 ## Game Components
