@@ -30,6 +30,7 @@ Use of vectors:
 ![Wireframe Image 01 - Sketch Pad](assets/wireframe005.jpg)
 
 ## Priority Matrix
+![Priority Matrix](assets/PriorityMatrix.jpg)
 * Hit Detection Logic
 * Character Logic (Implementing Hit Detection)
 * Character Logic (Implementing Controls)
