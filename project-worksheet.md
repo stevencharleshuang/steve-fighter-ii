@@ -16,11 +16,11 @@ fighter. Two players face off against one another and use attacks to reduce the
 opponent's Hit Points to zero. The first player to defeat the other wins!
 
 Example of collision detection without using HTML5 Canvas:
-[a link](https://www.youtube.com/watch?v=Tk3YUimJtbY)
-[a link](https://github.com/Ishtmeet-Singh/Js_game)
+[Pure Javascript 2D Game - Speed Coding Tutorial](https://www.youtube.com/watch?v=Tk3YUimJtbY)
+[Git Hub](https://github.com/Ishtmeet-Singh/Js_game)
 
 Use of vectors:
-[a link](https://www.khanacademy.org/computing/computer-programming/programming-natural-simulations/programming-vectors/a/intro-to-vectors)
+[Khan Academy - Vectors](https://www.khanacademy.org/computing/computer-programming/programming-natural-simulations/programming-vectors/a/intro-to-vectors)
 
 ## Wireframes
 ![Wireframe Image 01 - Whiteboard](assets/wireframe001.jpg)
