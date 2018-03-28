@@ -1,8 +1,26 @@
 # Project Overview
+Day | Deliverable
+------------ | -------------
+Day 1 Tuesday | Wireframes and Priority Matrix
+Day 2 Wednesday | Project Approval / Pseudo Code
+Day 3 Thursday | Basic Clickable Model
+Day 4 Friday  | Working Prototype
+Day 5 Saturday | Final Working Project
+Day 6 Sunday | Bugs / Styling / Post MVP
+Day 7 Monday | Project Presentations
 
 ## Project Description
 
-Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and\or functionality
+"Steve Fighter" is a personal rendition of a classic multiplayer arena style 
+fighter. Two players face off against one another and use attacks to reduce the 
+opponent's Hit Points to zero. The first player to defeat the other wins!
+
+Example of collision detection without using HTML5 Canvas:
+[a link](https://www.youtube.com/watch?v=Tk3YUimJtbY)
+[a link](https://github.com/Ishtmeet-Singh/Js_game)
+
+Use of vectors:
+[a link](https://www.khanacademy.org/computing/computer-programming/programming-natural-simulations/programming-vectors/a/intro-to-vectors)
 
 ## Wireframes
 ![Wireframe Image 01 - Whiteboard](assets/wireframe001.jpg)
@@ -10,12 +28,11 @@ Use this section to describe your final project and perhaps any links to relevan
 ![Wireframe Image 01 - Sketch Pad](assets/wireframe003.jpg)
 ![Wireframe Image 01 - Sketch Pad](assets/wireframe004.jpg)
 ![Wireframe Image 01 - Sketch Pad](assets/wireframe005.jpg)
-Include images of your wireframes. 
 
 ## Game Components
 
 ### Landing Page
-What will a player see when they start your game?
+
 
 ### Game Initialization
 What will a player see when the game is started? 
@@ -37,7 +54,17 @@ Time frames are also key in the development cycle.  You have limited time to cod
 
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Component 1 | H | 10hrs| 12hrs | 12hrs |
+| 2D Hit-Detection | H | 12hrs | | |
+| Win Logic | H | 3hrs | | |
+| Character Logic | H | 6hrs | | |
+| Health Bar/HP System | H | 6hrs | | |
+| Character Design | L | 1hrs | | |
+| Level Design | L | 1hrs | | |
+| Landing Page Design | L | 1hrs | | |
+| End Page Design | L | 1hrs | | |
+| End Page UI | L | 1hrs | | |
+| Landing Page User Input | Medium | 3hrs | | |
+| Sum Hours | | 35hrs | | |
 
 ## Helper Functions
 Helper functions should be generic enought that they can be reused in other applications. Use this section to document all helper functions that fall into this category.
