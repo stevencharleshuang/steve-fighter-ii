@@ -23,14 +23,14 @@ Use of vectors:
 * [Khan Academy - Vectors](https://www.khanacademy.org/computing/computer-programming/programming-natural-simulations/programming-vectors/a/intro-to-vectors)
 
 ## Wireframes
-* ![Wireframe Image 01 - Whiteboard](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522247701/GA%20Project%201/wireframe001.jpg)
-* ![Wireframe Image 02 - Sketch Pad](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522247701/GA%20Project%201/wireframe002.jpg)
-* ![Wireframe Image 03 - Sketch Pad](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522247701/GA%20Project%201/wireframe003.jpg)
-* ![Wireframe Image 04 - Sketch Pad](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522248359/GA%20Project%201/wireframe006.jpg)
-* ![Wireframe Image 05 - Sketch Pad](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522247700/GA%20Project%201/wireframe005.jpg)
+* [Wireframe Image 01 - Whiteboard - General Overview](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522247701/GA%20Project%201/wireframe001.jpg)
+* [Wireframe Image 02 - Sketch Pad - Landing and End Page](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522247701/GA%20Project%201/wireframe002.jpg)
+* [Wireframe Image 03 - Sketch Pad - Game Page](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522247701/GA%20Project%201/wireframe003.jpg)
+* [Wireframe Image 04 - Sketch Pad - MVP Game Screen](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522248359/GA%20Project%201/wireframe006.jpg)
+* [Wireframe Image 05 - Sketch Pad - Post MVP Game Screen](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522247700/GA%20Project%201/wireframe005.jpg)
 
 ## Priority Matrix
-* ![Priority Matrix](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522250867/priority-matrix.jpg)
+* [Priority Matrix](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522250867/priority-matrix.jpg)
 
 ## Game Components
 
