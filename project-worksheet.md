@@ -32,26 +32,31 @@ Use of vectors:
 ## Game Components
 
 ### Landing Page
-
+When the site is fully loaded, the players will see a the title, "Steve Fighter," 
+as a logo. There will be a "Player 1" and "Player 2" name input form with a 
+button for submission.
 
 ### Game Initialization
-What will a player see when the game is started? 
+When the game is initialized, the players will see a "Hit Point" counter which
+will dictate how much health their character has remaining. Two character avatars
+will be face to face with some distance between them. Their input names from the
+landing screen will display in their respective lower corners.
 
 ### Playing The Game
-What will be the flow of the game, what will the user be expected to do and what will the user expect from the gam
+Using one hand, the players will be able to control their respective avatars by
+using the keyboard. The players will then attempt to reduce their opponent's 
+"Hit Points" to zero.
 
 ### Winning The Game
-What does it look like when the game ends, what determines winning or losing?
+When a player successfully reduces his or her opponent's "Hit Points" to zero, he
+or she wins the game. They will land on a "Win" screen that displays their name
+announcing that they are victorious.  
 
 ### Game Reset
-How will the user restart the game once it has been completed.
+On the "Win" screen, they will have the option to restart the fight or go back to
+the landing page for new player name inputs.
 
 ## Functional Components
-
-Based on the initial logic defined in the previous game phases section try and breakdown the logic further into functional components, and by that we mean functions.  Does your logic indicate that code could be encapsulated for the purpose of reusablility.  Once a function has been defined it can then be incorporated into a class as a method. 
-
-Time frames are also key in the development cycle.  You have limited time to code all phases of the game.  Your estimates can then be used to evalute game possibilities based on time needed and the actual time you have before game must be submitted. 
-
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | 2D Hit-Detection | H | 12hrs | | |
@@ -63,7 +68,7 @@ Time frames are also key in the development cycle.  You have limited time to cod
 | Landing Page Design | L | 1hrs | | |
 | End Page Design | L | 1hrs | | |
 | End Page UI | L | 1hrs | | |
-| Landing Page User Input | Medium | 3hrs | | |
+| Landing Page User Input | M | 3hrs | | |
 | Sum Hours | | 35hrs | | |
 
 ## Helper Functions
