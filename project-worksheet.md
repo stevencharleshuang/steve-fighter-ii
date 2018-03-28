@@ -23,23 +23,14 @@ Use of vectors:
 * [Khan Academy - Vectors](https://www.khanacademy.org/computing/computer-programming/programming-natural-simulations/programming-vectors/a/intro-to-vectors)
 
 ## Wireframes
-![Wireframe Image 01 - Whiteboard](assets/wireframe001.jpg)
-![Wireframe Image 01 - Sketch Pad](assets/wireframe002.jpg)
-![Wireframe Image 01 - Sketch Pad](assets/wireframe003.jpg)
-![Wireframe Image 01 - Sketch Pad](assets/wireframe004.jpg)
-![Wireframe Image 01 - Sketch Pad](assets/wireframe005.jpg)
+* ![Wireframe Image 01 - Whiteboard](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522247701/GA%20Project%201/wireframe001.jpg)
+* ![Wireframe Image 02 - Sketch Pad](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522247701/GA%20Project%201/wireframe002.jpg)
+* ![Wireframe Image 03 - Sketch Pad](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522247701/GA%20Project%201/wireframe003.jpg)
+* ![Wireframe Image 04 - Sketch Pad](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522248359/GA%20Project%201/wireframe006.jpg)
+* ![Wireframe Image 05 - Sketch Pad](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522247700/GA%20Project%201/wireframe005.jpg)
 
 ## Priority Matrix
-![Priority Matrix](assets/PriorityMatrix.jpg)
-* Hit Detection Logic
-* Character Logic (Implementing Hit Detection)
-* Character Logic (Implementing Controls)
-* Character Hit Point System
-* Win Logic
-* Landing Page Player Name Input Form
-* Character and Level Design
-* End Page Design
-* End Page User Interface
+* ![Priority Matrix](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522250867/priority-matrix.jpg)
 
 ## Game Components
 
@@ -100,17 +91,19 @@ the landing page for new player name inputs.
 ## Functional Components
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| 2D Hit-Detection | H | 12hrs | | |
-| Win Logic | H | 3hrs | | |
-| Character Logic | H | 6hrs | | |
-| Health Bar/HP System | H | 6hrs | | |
-| Character Design | L | 1hrs | | |
-| Level Design | L | 1hrs | | |
-| Landing Page Design | L | 1hrs | | |
+| Hit Detection Logic | H | 4hrs | | |
+| Hit Point System Logic | H | 4hrs | | |
+| Character Development - Hit Detection | H | 5hrs | | |
+| Character Development - Hit Point System | H | 3hrs | | |
+| Landing Page Development - Player Name Input Form | H | 2hrs | | |
+| End Page User Interface - Reset Button | H | 1hrs | | |
+| Character Development - Controls | M | 3hrs | | |
+| Win Case Logic | M | 2hrs | | |
+| Character and Level Design - Base Visual | L | 1hrs | | |
+| Character and Level Design - Animation | L | 1hrs | | |
+| Landing Page Design | L | 2hrs | | |
 | End Page Design | L | 1hrs | | |
-| End Page UI | L | 1hrs | | |
-| Landing Page User Input | M | 3hrs | | |
-| Sum Hours | | 35hrs | | |
+| Sum Hours | | 29hrs | | |
 
 ## Helper Functions
 Helper functions should be generic enought that they can be reused in other applications. Use this section to document all helper functions that fall into this category.
