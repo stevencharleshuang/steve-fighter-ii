@@ -57,7 +57,7 @@ body {
 }
 .player-select {
 }
-.player1-input {
+.player1-form {
   margin: 20px;
   height: 400px;
   width: 200px;
@@ -66,7 +66,7 @@ body {
   display: inline-block;
   color: yellow;
 }
-.player2-input {
+.player2-form {
   margin: 20px;
   height: 400px;
   width: 200px;

@@ -9,6 +9,7 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crafty/0.9.0/crafty-min.js"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -17,24 +18,27 @@
     <img src="images/stevefighterlogo.png" id="logo">
     </center>
     <div class="player-select">
-      <div class="player1-input">
-        <form action="/action_page.php" id="player1-input">
-          Player 1 Name: <input type="text" name="p1Name"><br>
-          <input type="submit" value="Kick Ass!" id="p1-nameSubmit">
+      <div class="player1-form">
+        <form id="player1-input">
+          Player 1 Name:
+          <input type="text" id="p1Name"><br>
+          <button id="p1-nameSubmit">Kick Ass!</button>
         </form>
       </div>
       <div id="start-btn">Let's Kick Some Ass!
       </div>
-      <div class="player2-input">
-        <form action="/action_page.php" id="player2-input">
-          Player 2 Name: <input type="text" name="p2Name" id="p2-nameSubmit"><br>
-          <input type="submit" value="Kick Ass!">
+      <div class="player2-form">
+        <form id="player2-input">
+          Player 2 Name:
+          <input type="text" id="p2Name"><br>
+          <button id="p2-nameSubmit">Kick Ass!</button>
         </form>
       </div>
     </div>
     <div id="landing-ftr">Steve Fighter 1 was a flop =(</div>
   </div>
   <div class="fight-screen">
+    <div id="cr-stage"></div>
     <!-- For Clickable Model, Testing, and Debugging Only! -->
     <button id="cheat-btn">InstaWin!</button>
   </div>
@@ -46,5 +50,6 @@
   </div>
   <!-- <div><img src="images/streetfighterlogo.png"></div> -->
   <script src="js/main.js"></script>
+  <script src="js/crafty-min.js"></script>
 </body>
 </html>

@@ -21,28 +21,29 @@ $( document ).ready(function() {
   let p1;
   let p2;
   // Player get Names
-  // Prevent Default Submit Actions
+  // Target #player1-input and #player2-input
+  let p1Input = $('#player1-input');
+  let p2Input = $('#player2-input');
   // p1 Form Event Listener
-  $('.player1-input').submit(function(event) {
-    alert("Handler for .submit() called.");
-    // Get Name text
-    p1 = $('.player1-input').text();
+  $('#p1-nameSubmit').click(function(event) {
+    // Testing
+    console.log("Handler for .submit() called.");
     // Prevent p1 Form Submission Action
-    event.preventDefault();
+    // event.preventDefault();
+    // Get Name text
+    p1 = document.getElementById('p1Name').value;
     // Remove p1 form, replace with name text
-    $('.player1-input').empty();
-    $('.player1-input').text();
-  console.log('.player1-input');
+    $('#player1-input').replaceWith(`Player 1: <br/>${p1}`);
   });
   // p2 Form Event Listener
-  $('.player2-input').submit(function(event) {
-    alert("Handler for .submit() called.");
+  $('#p2-nameSubmit').click(function(event) {
+    console.log("Handler for .submit() called.");
     // Get Name text
-    p2 = $('#p2Name').text();
-    // Prevent p2 Form Submission Action
-    event.preventDefault();
+    p2 = document.getElementById('p2Name').value;
+    // // Prevent p2 Form Submission Action
+    // event.preventDefault();
       // Remove p2 form, replace with name text
-  console.log(p2);
+    $('#player2-input').replaceWith(`Player 2: <br/>${p2}`);
   });
 
   // Start Button
@@ -92,12 +93,48 @@ $( document ).ready(function() {
             // if (keycode) {$(P1).HP.value decreases by 10}
             // if (keycode) toggle .p2punch div (anim)
             // pMVP? - if (keycode) toggle .p1hurt div (anim)
-  // ** Hit Detection Solution
-* Win-Case:
+            */
+  // Hit Detection Solution
+  // https://codepen.io/stevencharles/pen/Zxrwmp
+  Crafty.init(800, 600);
+
+  let dim1 = {x: 200, y: 300, w: 100, h: 200}
+  let dim2 = {x: 500, y: 300, w: 100, h: 200}
+
+  let blueBox = Crafty.e("2D, Canvas, Color, Keyboard, Fourway").fourway(200).attr(dim1).color("blue");
+
+  let redBox = Crafty.e("2D, Canvas, Color, Keyboard, Multiway").attr(dim2).color("red").multiway({I: -90, J: 90, L: 0, J: 180});
+
+  blueBox.bind("EnterFrame", function () {
+      if (redBox.x < blueBox.x + blueBox.w &&
+          redBox.x + redBox.w > blueBox.x &&
+          redBox.y < blueBox.y + blueBox.h &&
+          redBox.h + redBox.y > blueBox.y) {
+          console.log('collision detected!')
+          this.color("green");
+      } else {
+          // no collision
+          this.color("blue");
+      }
+  });
+  redBox.bind("EnterFrame", function () {
+      if (blueBox.x < redBox.x + redBox.w &&
+          blueBox.x + blueBox.w > redBox.x &&
+          blueBox.y < redBox.y + redBox.h &&
+          blueBox.h + blueBox.y > redBox.y) {
+          console.log('collision detected!')
+          this.color("yellow");
+      } else {
+          // no collision
+          this.color("red");
+      }
+  });
+
+// * Win-Case:
   // if Player 1 HP <= 0, Player 2 Wins
   // else if Player 2 HP <= 0, Player 1 Wins
-* Call fight();
-*/
+// * Call fight();
+
   // *** Cheat Win (for testing and debugging)
     // Button - On click load .end-screen
     $('#cheat-btn').on('click', function(){
