@@ -96,39 +96,40 @@ $( document ).ready(function() {
             */
   // Hit Detection Solution
   // https://codepen.io/stevencharles/pen/Zxrwmp
-  Crafty.init(800, 600);
+  /* Uses Canvas, not a solution */
+  // Crafty.init(800, 600);
 
-  let dim1 = {x: 200, y: 300, w: 100, h: 200}
-  let dim2 = {x: 500, y: 300, w: 100, h: 200}
+  // let dim1 = {x: 200, y: 300, w: 100, h: 200}
+  // let dim2 = {x: 500, y: 300, w: 100, h: 200}
 
-  let blueBox = Crafty.e("2D, Canvas, Color, Keyboard, Fourway").fourway(200).attr(dim1).color("blue");
+  // let blueBox = Crafty.e("2D, Canvas, Color, Keyboard, Fourway").fourway(200).attr(dim1).color("blue");
 
-  let redBox = Crafty.e("2D, Canvas, Color, Keyboard, Multiway").attr(dim2).color("red").multiway({I: -90, J: 90, L: 0, J: 180});
+  // let redBox = Crafty.e("2D, Canvas, Color, Keyboard, Multiway").attr(dim2).color("red").multiway({I: -90, J: 90, L: 0, J: 180});
 
-  blueBox.bind("EnterFrame", function () {
-      if (redBox.x < blueBox.x + blueBox.w &&
-          redBox.x + redBox.w > blueBox.x &&
-          redBox.y < blueBox.y + blueBox.h &&
-          redBox.h + redBox.y > blueBox.y) {
-          console.log('collision detected!')
-          this.color("green");
-      } else {
-          // no collision
-          this.color("blue");
-      }
-  });
-  redBox.bind("EnterFrame", function () {
-      if (blueBox.x < redBox.x + redBox.w &&
-          blueBox.x + blueBox.w > redBox.x &&
-          blueBox.y < redBox.y + redBox.h &&
-          blueBox.h + blueBox.y > redBox.y) {
-          console.log('collision detected!')
-          this.color("yellow");
-      } else {
-          // no collision
-          this.color("red");
-      }
-  });
+  // blueBox.bind("EnterFrame", function () {
+  //     if (redBox.x < blueBox.x + blueBox.w &&
+  //         redBox.x + redBox.w > blueBox.x &&
+  //         redBox.y < blueBox.y + blueBox.h &&
+  //         redBox.h + redBox.y > blueBox.y) {
+  //         console.log('collision detected!')
+  //         this.color("green");
+  //     } else {
+  //         // no collision
+  //         this.color("blue");
+  //     }
+  // });
+  // redBox.bind("EnterFrame", function () {
+  //     if (blueBox.x < redBox.x + redBox.w &&
+  //         blueBox.x + blueBox.w > redBox.x &&
+  //         blueBox.y < redBox.y + redBox.h &&
+  //         blueBox.h + blueBox.y > redBox.y) {
+  //         console.log('collision detected!')
+  //         this.color("yellow");
+  //     } else {
+  //         // no collision
+  //         this.color("red");
+  //     }
+  // });
 
 // * Win-Case:
   // if Player 1 HP <= 0, Player 2 Wins
