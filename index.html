@@ -13,18 +13,36 @@
 </head>
 <body>
   <div class="landing-screen">
-    <img src="images/streetfighterlogo.png">
+    <center>
+    <img src="images/stevefighterlogo.png" id="logo">
+    </center>
     <div class="player-select">
-      <div class="player-input" id="player1-input">Player 1</div>
-      <div id="start-btn">Start!</div>
-      <div class="player-input" id="player2-input">Player 2</div>
+      <div class="player1-input">
+        <form action="/action_page.php" id="player1-input">
+          Player 1 Name: <input type="text" name="p1Name"><br>
+          <input type="submit" value="Kick Ass!" id="p1-nameSubmit">
+        </form>
+      </div>
+      <div id="start-btn">Let's Kick Some Ass!
+      </div>
+      <div class="player2-input">
+        <form action="/action_page.php" id="player2-input">
+          Player 2 Name: <input type="text" name="p2Name" id="p2-nameSubmit"><br>
+          <input type="submit" value="Kick Ass!">
+        </form>
+      </div>
     </div>
+    <div id="landing-ftr">Steve Fighter 1 was a flop =(</div>
   </div>
   <div class="fight-screen">
-
+    <!-- For Clickable Model, Testing, and Debugging Only! -->
+    <button id="cheat-btn">InstaWin!</button>
   </div>
   <div class="end-screen">
-
+    <!-- For Clickable Model, Testing, and Debugging Only! -->
+    <button id="replay-btn">Fight Again?</button>
+    <!-- For Clickable Model, Testing, and Debugging Only! -->
+    <button id="landing-btn">Back To Player Screen</button>
   </div>
   <!-- <div><img src="images/streetfighterlogo.png"></div> -->
   <script src="js/main.js"></script>

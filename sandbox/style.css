@@ -31,8 +31,8 @@ body {
   width: 100px;
 }
 .green-square {
-  background-color: green;
   position: absolute;
+  background-color: green;
   top: 40%;
   left: 60%;
   height: 100px;
