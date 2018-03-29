@@ -1,7 +1,37 @@
 body {
   background-color: black;
-  background-image: url('images/streetfighterlogo.png');
+/*  background-image: url('../images/streetfighterlogo.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center top;*/
   text-align: center;
 }
-div {
+.landing-screen{
+  visibility: visible;
 }
+.fight-screen{
+  visibility: hidden;
+}
+.end-screen {
+  visibility: hidden;
+}
+.player-select {
+}
+.player-input {
+  height: 400px;
+  width: 200px;
+  background-color: rgba(100,100,100,.7);
+  display: inline-block;
+
+  color: yellow;
+}
+#start-btn {
+  display: inline-block;
+  vertical-align: bottom;
+  height: 50px;
+  width: 100px;
+  background-color: lightgray;
+  border-radius: 20px;
+  padding: 5px;
+}
+

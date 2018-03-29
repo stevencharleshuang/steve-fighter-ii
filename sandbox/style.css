@@ -1,0 +1,50 @@
+body {
+  background-color: black;
+}
+.landing-screen {
+  position: absolute;
+  height:600px;
+  width:900px;
+  background-color: beige;
+  visibility: visible;
+}
+.start-button {
+  height: 100px;
+  width: 200px;
+  background-color: red
+}
+.fight-screen {
+  position: absolute;
+/*  margin: 0 auto;*/
+  background-color: white;
+  height:600px;
+  width:900px;
+  visibility: hidden;
+  overflow: hidden;
+}
+.blue-square {
+  position: absolute;
+  background-color: blue;
+  top: 40%;
+  left: 40%;
+  height: 100px;
+  width: 100px;
+}
+.green-square {
+  background-color: green;
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  height: 100px;
+  width: 100px;
+}
+@keyframes moveRight {
+    100% {
+    transform: translate(140px,0);
+  }
+}
+@keyframes moveLeft {
+    100% {
+    transform: translate(0,0);
+  }
+}
