@@ -56,7 +56,6 @@ $( document ).ready(function() {
 // /////////////////////////////////////////////////////////////////////////////
 // Fight Screen
 // /////////////////////////////////////////////////////////////////////////////
-
 /* Pseudo Code
 * Fight Function
   // Declare Player 1 and Player 2 avatars (divs)
@@ -97,10 +96,28 @@ $( document ).ready(function() {
             */
   // Hit Detection Solution
   const fight = function () {
+    // Declarations and avatar initializations
     let player1 = $('.player-1');
     let player2 = $('.player-2');
     player1.css({'left': '100px', 'background-color': 'blue'});
     player2.css({'left': '550px', 'background-color': 'green'});
+    // /////////////////////////////////////////////////////////////////
+    // Player Name Display
+    // Name Displays
+    if (p1!==undefined) {
+      $('.player-1-name').text(`${p1}`);
+    }
+    else {
+      $('.player-1-name').text(`Player 1`)
+    }
+    if (p2!==undefined) {
+      $('.player-2-name').text(`${p2}`);
+    }
+    else {
+      $('.player-2-name').text(`Player 2`)
+    }
+
+    // /////////////////////////////////////////////////////////////////
     // Motion Controls
     // https://stackoverflow.com/questions/7298507/move-element-with-keypress-multiple
     let keys = {};
@@ -156,14 +173,30 @@ $( document ).ready(function() {
         // Player attacks
         // Punch 'e'
         else if (keyPressed == 69) {
+            // Increase div width
             $(player1).css('width', '225');
+              if (hitDetect()===true) {
+                $(player1).css('background-color', 'yellow')
+                console.log('punch')
+                p2Damage();
+                checkWin();
+              }
+            // Return to original Div width
             $(document).keyup(function(){
               $(player1).css('width', '150')
             });
         }
         // Punch 'o'
         else if (keyPressed == 79) {
+            // Increase div width
             $(player2).css('width', '225');
+            if (hitDetect()===true) {
+                $(player2).css('background-color', 'yellow')
+                console.log('punch')
+                p1Damage();
+                checkWin();
+              }
+            // Return to original Div width
             $(document).keyup(function(){
               $(player2).css('width', '150')
             });
@@ -183,14 +216,18 @@ $( document ).ready(function() {
       player1BCR.x + player1BCR.width > player2BCR.x &&
       player1BCR.y < player2BCR.y + player2BCR.height &&
       player1BCR.height + player1BCR.y > player2BCR.y) {
+      //////////////////////////////////////////////////////////////////////////
       // Hit Detection Clauses
-        console.log('hit detected!');
+        // console.log('hit detected!');
         // Divs change color
         $(player1).css('background-color', 'red');
         $(player2).css('background-color', 'pink');
+        ////////////////////////////////////////////////////////////////////////
+        // Prevent Div Overlap
         // Divs pop back after hit
-        $(player1).animate({left: "-=5"}, 0);
-        $(player2).animate({left: "+=5"}, 0);
+        $(player1).animate({left: '-=3'}, 0);
+        $(player2).animate({left: '+=3'}, 0);
+        return true;
       }
       // Non-Hit Clauses
       else {
@@ -204,23 +241,69 @@ $( document ).ready(function() {
     // HP System
     // Target
     let p1HPSpan = $('#p1-hp-span');
-    let p1HPVal = 100
+    let p1HPVal = 50;
     p1HPSpan.html(p1HPVal);
     let p2HPSpan = $('#p2-hp-span');
-    let p2HPVal = 100
+    let p2HPVal = 50;
     p2HPSpan.html(p2HPVal);
   // *** Cheat Win (for testing and debugging)
     // Button - On click load .end-screen
-    $('#cheat-btn').on('click', function() {
+    ////////////////////////////////////////////////////////////////////
+    // Test Hit Button
+    $('#hit-player1').on('click', function() {
       // $('.end-screen').css('visibility', 'visible');
       // $('.fight-screen').css('visibility', 'hidden');
       // HP Reduction
       p1HPVal -= 10;
       p1HPSpan.html(p1HPVal);
+      checkWin();
     });
+    $('#hit-player2').on('click', function() {
+      // $('.end-screen').css('visibility', 'visible');
+      // $('.fight-screen').css('visibility', 'hidden');
+      // HP Reduction
+      p2HPVal -= 10;
+      p2HPSpan.html(p2HPVal);
+      checkWin();
+    });
+    $('#cheat-btn').on('click', function() {
+      $('.end-screen').css('visibility', 'visible');
+      $('.fight-screen').css('visibility', 'hidden');
+      // HP Reduction
+      p2HPVal -= 10;
+      p2HPSpan.html(p2HPVal);
+      checkWin();
+    });
+    ////////////////////////////////////////////////////////////////////////////
+    // Damage System
+    let p1Damage = function () {
+      p1HPVal -= 1;
+      p1HPSpan.html(p1HPVal);
+    }
+    let p2Damage = function () {
+      p2HPVal -= 1;
+      p2HPSpan.html(p2HPVal);
+    }
   // * Win-Case:
     // if Player 1 HP <= 0, Player 2 Wins
     // else if Player 2 HP <= 0, Player 1 Wins
+    let winner
+    let checkWin = function () {
+      if (p2HPVal <= 0) {
+        // alert('Player 1 wins!');
+        $('.end-screen').css('visibility', 'visible');
+        $('.fight-screen').css('visibility', 'hidden');
+        return winner = p1;
+        winnerDisplay();
+      }
+      else if (p1HPVal <= 0) {
+        alert(`Player 2 wins!`);
+        $('.end-screen').css('visibility', 'visible');
+        $('.fight-screen').css('visibility', 'hidden');
+        return winner = p2;
+        winnerDisplay();
+      }
+    }
   }
 // /////////////////////////////////////////////////////////////////////////////
 // End Screen
@@ -235,20 +318,23 @@ $( document ).ready(function() {
   // reCall .fight-screen
   // init fight();
 */
-    // For clickable Model ONLY
-    // *** Replay(for testing and debugging)
-    // Button - On click load .end-screen
-    $('#replay-btn').on('click', function(){
-      console.log('Fight start!');
-      $('.end-screen').css('visibility', 'hidden');
-      $('.fight-screen').css('visibility', 'visible');
-      fight();
-     });
-    $('#landing-btn').on('click', function(){
-      console.log('Fight start!');
-      $('.end-screen').css('visibility', 'hidden');
-      $('.landing-screen').css('visibility', 'visible');
-     });
+  function winnerDisplay () {
+  $('#winner').text(`${winner} wins!`)
+  // For clickable Model ONLY
+  // *** Replay(for testing and debugging)
+  // Button - On click load .end-screen
+  }
+  $('#replay-btn').on('click', function(){
+    console.log('Fight start!');
+    $('.end-screen').css('visibility', 'hidden');
+    $('.fight-screen').css('visibility', 'visible');
+    fight();
+   });
+  $('#landing-btn').on('click', function(){
+    console.log('Fight start!');
+    $('.end-screen').css('visibility', 'hidden');
+    $('.landing-screen').css('visibility', 'visible');
+   });
 
 // /////////////////////////////////////////////////////////////////////////////
 // Closes jQuery func

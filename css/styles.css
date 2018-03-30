@@ -113,7 +113,7 @@ body {
   right: 550px;
   height: 300px;
   width: 150px;
-  text-align: center;
+
   /*direction: rtl;*/
 }
 .player-1-hp {
@@ -178,6 +178,9 @@ body {
   display: block;
   margin: 0 auto;
 }
+/* Testing Only */
+#hit-player2 {position: absolute;top: 200px; left:100px;}
+#hit-player1 {position: absolute;top: 200px; right:100px;}
 button {
   font-size: 20px;
   font-family: 'VT323', monospace;
