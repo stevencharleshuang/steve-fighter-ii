@@ -96,12 +96,11 @@ $( document ).ready(function() {
             // pMVP? - if (keycode) toggle .p1hurt div (anim)
             */
   // Hit Detection Solution
-  // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
   const fight = function () {
     let player1 = $('.player-1');
     let player2 = $('.player-2');
     player1.css({'left': '100px', 'background-color': 'blue'});
-    player2.css({'right': '100px', 'background-color': 'green'});
+    player2.css({'left': '550px', 'background-color': 'green'});
     // Motion Controls
     // https://stackoverflow.com/questions/7298507/move-element-with-keypress-multiple
     let keys = {};
@@ -111,53 +110,70 @@ $( document ).ready(function() {
     $(document).keyup(function(e) {
         delete keys[e.keyCode];
     });
-    function movePlayer() {
+    function playerMoves() {
       let player1BCR = player1[0].getBoundingClientRect();
       let player2BCR = player2[0].getBoundingClientRect();
-      for (let direction in keys) {
-        if (!keys.hasOwnProperty(direction)) continue;
+      for (let keyPressed in keys) {
+        if (!keys.hasOwnProperty(keyPressed)) continue;
         // 'a' moves left
-        else if (direction == 65 && (player1BCR.x > 15)) {
+        else if (keyPressed == 65 && (player1BCR.x > 110)) {
             $(player1).animate({left: "-=5"}, 0);
             hitDetect();
         }
         // 'w' moves up
-        // else if (direction == 87) {
+        // else if (keyPressed == 87) {
         //  $(player1).animate({top: "-=5"}, 0);
         // }
         // 'd' moves right
-        else if (direction == 68) {
+        else if (keyPressed == 68) {
             $(player1).animate({left: "+=5"}, 0);
             hitDetect();
         }
         // 's' moves down
-        // else if (direction == 83) {
+        // else if (keyPressed == 83) {
         //  $(player1).animate({top: "+=5"}, 0);
         // }
         // 'l' moves left
-        else if (direction == 76) {
+        else if (keyPressed == 76) {
             $(player2).animate({left: "-=5"}, 0);
             hitDetect();
         }
         // 'p' moves up
-        // else if (direction == 80) {
+        // else if (keyPressed == 80) {
             // $(player2).animate({top: "-=5"}, 0);
         // }
         // ''' moves right
-        else if (direction == 222 && (player2BCR.x < 665)) {
+        else if (keyPressed == 222 && (player2BCR.x < 755)) {
             $(player2).animate({left: "+=5"}, 0);
             hitDetect();
         }
         // ';' moves down
-        // else if (direction == 186) {
+        // else if (keyPressed == 186) {
         //     $(player2).animate({top: "+=5"}, 0);
         // }
+        // /////////////////////////////////////////////////////////////////////
+        // Player attacks
+        // Punch 'e'
+        else if (keyPressed == 69) {
+            $(player1).css('width', '250');
+            $(document).keyup(function(){
+              $(player1).css('width', '150')
+            });
+        }
+        // Punch 'o'
+        else if (keyPressed == 79) {
+            $(player2).css('width', '250');
+            $(document).keyup(function(){
+              $(player2).css('width', '150')
+            });
+        }
       }
     }
-    movePlayer();
-    setInterval(movePlayer, 10);
-    /////////////////////////////
+    playerMoves();
+    setInterval(playerMoves, 10);
+    // /////////////////////////////////////////////////////////////////////////
     // Hit collision from scratch
+    // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
     let hitDetect = function () {
       let player1BCR = player1[0].getBoundingClientRect();
       let player2BCR = player2[0].getBoundingClientRect();

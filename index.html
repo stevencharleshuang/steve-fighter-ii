@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Steve Fighter</title>
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
   <script src="js/jquery-3.3.1.min.js" type="text/javascript"
   charset="utf-8" async defer></script>
   <script
@@ -21,16 +22,15 @@
       <div class="player1-form">
         <form id="player1-input">
           Player 1 Name:
-          <input type="text" id="p1Name"><br>
+          <input type="text" id="p1Name" placeholder="Name"><br><br>
           <button id="p1-nameSubmit">Kick Ass!</button>
         </form>
       </div>
-      <div id="start-btn">Let's Kick Some Ass!
-      </div>
+      <button id="start-btn">Let's Kick Some Ass!</button>
       <div class="player2-form">
         <form id="player2-input">
           Player 2 Name:
-          <input type="text" id="p2Name"><br>
+          <input type="text" id="p2Name" placeholder="Name"><br><br>
           <button id="p2-nameSubmit">Kick Ass!</button>
         </form>
       </div>
@@ -39,19 +39,30 @@
   </div>
   <div class="fight-screen">
     <div class="battle-arena">
+      <div class="player-1-hp">HP Remaining: <span>100</span></div>
+      <div class="player-2-hp">HP Remaining: <span>100</span></div>
       <!-- For Clickable Model, Testing, and Debugging Only! -->
       <button id="cheat-btn">InstaWin!</button>
       <div class=player-1></div>
       <div class=player-2></div>
+      <div class="player-1-name">Player 1</div>
+      <div class="player-2-name">Player 2</div>
     </div>
   </div>
   <div class="end-screen">
-    <!-- For Clickable Model, Testing, and Debugging Only! -->
-    <button id="replay-btn">Fight Again?</button>
-    <!-- For Clickable Model, Testing, and Debugging Only! -->
-    <button id="landing-btn">Back To Player Screen</button>
-  </div>
-  <!-- <div><img src="images/streetfighterlogo.png"></div> -->
+    <div class="announcement-box">
+      <div class="container">
+        <p>
+        You Win!
+        </p>
+        <p>
+          <!-- For Clickable Model, Testing, and Debugging Only! -->
+          <button id="replay-btn">Fight Again?</button><br>
+          <!-- For Clickable Model, Testing, and Debugging Only! -->
+          <button id="landing-btn">Back To Player Screen</button>
+        </p>
+    </div>
+    </div>
   <script src="js/main.js"></script>
 </body>
 </html>
