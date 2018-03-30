@@ -16,45 +16,6 @@ body {
   width: 800px;
   visibility: visible;
 }
-#start-btn {
-  margin: 20px;
-  display: inline-block;
-  vertical-align: bottom;
-  height: 50px;
-  width: 100px;
-  background-color: lightgray;
-  border-radius: 20px;
-  padding: 5px;
-}
-#start-btn:hover {
-  cursor: pointer;
-}
-#landing-ftr {
-  margin: 20px;
-  color: yellow;
-}
-.fight-screen{
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%)
-  height: 600px;
-  width: 800px;
-  border-radius: 10px;
-  background-color: rgba(100,100,100,.7);
-  visibility: hidden;
-}
-.end-screen {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%)
-  height: 600px;
-  width: 800px;
-  border-radius: 10px;
-  background-color: rgba(100,100,100,.7);
-  visibility: hidden;
-}
 .player-select {
 }
 .player1-form {
@@ -84,7 +45,69 @@ body {
   transform: translateX(-50%)
 /*  height: auto;
   max-width: 790px;*/
-
   /*-webkit-transform: translateX(-50%);*/
   /*transform: translateX(-50%)*/
+}
+
+#start-btn {
+  margin: 20px;
+  display: inline-block;
+  vertical-align: bottom;
+  height: 50px;
+  width: 100px;
+  background-color: lightgray;
+  border-radius: 20px;
+  padding: 5px;
+}
+#start-btn:hover {
+  cursor: pointer;
+}
+#landing-ftr {
+  margin: 20px;
+  color: yellow;
+}
+.fight-screen{
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%)
+  height: 600px;
+  width: 800px;
+  border-radius: 10px;
+  background-color: rgba(100,100,100,.7);
+  visibility: hidden;
+}
+.battle-arena {
+  background-color: white;
+  height: 600px;
+  width: 800px;
+}
+.player-1 {
+  position: absolute;
+  /*display: inline-block;*/
+  background-color: blue;
+  top: 300px;
+  left: 100px;
+  height: 300px;
+  width: 150px;
+}
+.player-2 {
+  position: absolute;
+  /*display: inline-block;*/
+  background-color: green;
+  top: 300px;
+  right: 100px;
+  height: 300px;
+  width: 150px;
+}
+.end-screen {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%)
+  height: 600px;
+  width: 800px;
+  border-radius: 10px;
+  background-color: rgba(100,100,100,.7);
+  visibility: hidden;
 }

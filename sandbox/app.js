@@ -7,11 +7,11 @@ $(function() {
 // let makeDiv = $(document.body);
 // makeDiv.append('<div></div>')
 // console.log(makeDiv);
-  let blueBox = $('.blue-box');
-  let greenBox = $('.green-box');
+let blueBox = $('.blue-box');
+let greenBox = $('.green-box');
 // Motion Controls
 // https://stackoverflow.com/questions/7298507/move-element-with-keypress-multiple
-  let keys = {}
+let keys  = {}
 
 $(document).keydown(function(e) {
     keys[e.keyCode] = true;
@@ -26,41 +26,33 @@ function moveSq() {
         // 'a' moves left
         else if (direction == 65) {
             $(blueBox).animate({left: "-=5"}, 0);
-            // getBlueBCR();
-            // getGreenBCR();
             hitDetect();
         }
         // 'w' moves up
         // else if (direction == 87) {
-        //     $(blueBox).animate({top: "-=5"}, 0);
+        //  $(blueBox).animate({top: "-=5"}, 0);
         // }
         // 'd' moves right
         else if (direction == 68) {
             $(blueBox).animate({left: "+=5"}, 0);
-            // getBlueBCR();
-            // getGreenBCR();
             hitDetect();
         }
         // 's' moves down
         // else if (direction == 83) {
-        //     $(blueBox).animate({top: "+=5"}, 0);
+        //  $(blueBox).animate({top: "+=5"}, 0);
         // }
         // 'l' moves left
         else if (direction == 76) {
             $(greenBox).animate({left: "-=5"}, 0);
-            // getBlueBCR();
-            // getGreenBCR();
             hitDetect();
         }
         // 'p' moves up
         // else if (direction == 80) {
-        //     $(greenBox).animate({top: "-=5"}, 0);
+            // $(greenBox).animate({top: "-=5"}, 0);
         // }
         // ''' moves right
         else if (direction == 222) {
             $(greenBox).animate({left: "+=5"}, 0);
-            // getBlueBCR();
-            // getGreenBCR();
             hitDetect();
         }
         // ';' moves down
@@ -73,7 +65,6 @@ moveSq();
 setInterval(moveSq, 10);
 /////////////////////////////
 // Hit collision from scratch
-
 let hitDetect = function () {
   let blueBCR = blueBox[0].getBoundingClientRect();
   let greenBCR = greenBox[0].getBoundingClientRect();
@@ -82,10 +73,16 @@ let hitDetect = function () {
     blueBCR.x + blueBCR.width > greenBCR.x &&
     blueBCR.y < greenBCR.y + greenBCR.height &&
     blueBCR.height + blueBCR.y > greenBCR.y) {
+    // Hit Detection Clauses
       console.log('hit detected!');
+      // Divs change color
       blueBox.css('background-color', 'red')
       greenBox.css('background-color', 'pink')
+      // Divs pop back after hit
+      $(blueBox).animate({left: "-=5"}, 0);
+      $(greenBox).animate({left: "+=5"}, 0);
     }
+    // Non-Hit Clauses
     else {
       blueBox.css('background-color', 'blue')
       greenBox.css('background-color', 'green')

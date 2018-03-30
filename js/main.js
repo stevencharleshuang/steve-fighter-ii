@@ -95,42 +95,90 @@ $( document ).ready(function() {
             // pMVP? - if (keycode) toggle .p1hurt div (anim)
             */
   // Hit Detection Solution
-  // https://codepen.io/stevencharles/pen/Zxrwmp
-  /* Uses Canvas, not a solution */
-  // Crafty.init(800, 600);
+  // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+  let player1 = $('.player-1');
+  let player2 = $('.player-2');
+  // Motion Controls
+  // https://stackoverflow.com/questions/7298507/move-element-with-keypress-multiple
+  let keys  = {}
 
-  // let dim1 = {x: 200, y: 300, w: 100, h: 200}
-  // let dim2 = {x: 500, y: 300, w: 100, h: 200}
+  $(document).keydown(function(e) {
+    keys[e.keyCode] = true;
+  });
 
-  // let blueBox = Crafty.e("2D, Canvas, Color, Keyboard, Fourway").fourway(200).attr(dim1).color("blue");
-
-  // let redBox = Crafty.e("2D, Canvas, Color, Keyboard, Multiway").attr(dim2).color("red").multiway({I: -90, J: 90, L: 0, J: 180});
-
-  // blueBox.bind("EnterFrame", function () {
-  //     if (redBox.x < blueBox.x + blueBox.w &&
-  //         redBox.x + redBox.w > blueBox.x &&
-  //         redBox.y < blueBox.y + blueBox.h &&
-  //         redBox.h + redBox.y > blueBox.y) {
-  //         console.log('collision detected!')
-  //         this.color("green");
-  //     } else {
-  //         // no collision
-  //         this.color("blue");
-  //     }
-  // });
-  // redBox.bind("EnterFrame", function () {
-  //     if (blueBox.x < redBox.x + redBox.w &&
-  //         blueBox.x + blueBox.w > redBox.x &&
-  //         blueBox.y < redBox.y + redBox.h &&
-  //         blueBox.h + blueBox.y > redBox.y) {
-  //         console.log('collision detected!')
-  //         this.color("yellow");
-  //     } else {
-  //         // no collision
-  //         this.color("red");
-  //     }
-  // });
-
+  $(document).keyup(function(e) {
+      delete keys[e.keyCode];
+  });
+    function movePlayer() {
+      for (let direction in keys) {
+          if (!keys.hasOwnProperty(direction)) continue;
+          // 'a' moves left
+          else if (direction == 65) {
+              $(player1).animate({left: "-=5"}, 0);
+              hitDetect();
+          }
+          // 'w' moves up
+          // else if (direction == 87) {
+          //  $(player1).animate({top: "-=5"}, 0);
+          // }
+          // 'd' moves right
+          else if (direction == 68) {
+              $(player1).animate({left: "+=5"}, 0);
+              hitDetect();
+          }
+          // 's' moves down
+          // else if (direction == 83) {
+          //  $(player1).animate({top: "+=5"}, 0);
+          // }
+          // 'l' moves left
+          else if (direction == 76) {
+              $(player2).animate({left: "-=5"}, 0);
+              hitDetect();
+          }
+          // 'p' moves up
+          // else if (direction == 80) {
+              // $(player2).animate({top: "-=5"}, 0);
+          // }
+          // ''' moves right
+          else if (direction == 222) {
+              $(player2).animate({left: "+=5"}, 0);
+              hitDetect();
+          }
+          // ';' moves down
+          // else if (direction == 186) {
+          //     $(player2).animate({top: "+=5"}, 0);
+          // }
+      }
+  }
+  movePlayer();
+  setInterval(movePlayer, 10);
+  /////////////////////////////
+  // Hit collision from scratch
+  let hitDetect = function () {
+    let player1BCR = player1[0].getBoundingClientRect();
+    let player2BCR = player2[0].getBoundingClientRect();
+    // console.log(player2BCR);
+      if (player1BCR.x < player2BCR.x + player2BCR.width &&
+      player1BCR.x + player1BCR.width > player2BCR.x &&
+      player1BCR.y < player2BCR.y + player2BCR.height &&
+      player1BCR.height + player1BCR.y > player2BCR.y) {
+      // Hit Detection Clauses
+        console.log('hit detected!');
+        // Divs change color
+        player1.css('background-color', 'red')
+        player2.css('background-color', 'pink')
+        // Divs pop back after hit
+        $(player1).animate({left: "-=5"}, 0);
+        $(player2).animate({left: "+=5"}, 0);
+      }
+      // Non-Hit Clauses
+      else {
+        player1.css('background-color', 'blue')
+        player2.css('background-color', 'green')
+      }
+    // console.log(player1BCR);
+    // console.log(blueBCR)
+  }
 // * Win-Case:
   // if Player 1 HP <= 0, Player 2 Wins
   // else if Player 2 HP <= 0, Player 1 Wins
