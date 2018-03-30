@@ -108,12 +108,14 @@ $( document ).ready(function() {
       $('.player-1-name').text(`${p1}`);
     }
     else {
+      p1 = 'Player 1';
       $('.player-1-name').text(`Player 1`)
     }
     if (p2!==undefined) {
       $('.player-2-name').text(`${p2}`);
     }
     else {
+      p2 = 'Player 2';
       $('.player-2-name').text(`Player 2`)
     }
 
@@ -132,6 +134,8 @@ $( document ).ready(function() {
       let player2BCR = player2[0].getBoundingClientRect();
       for (let keyPressed in keys) {
         if (!keys.hasOwnProperty(keyPressed)) continue;
+        ////////////////////////////////////////////////////////////////////////
+        // Player 1 Controls
         // 'a' moves left
         else if (keyPressed == 65 && (player1BCR.x > 220)) {
             $(player1).animate({left: "-=5"}, 0);
@@ -150,6 +154,8 @@ $( document ).ready(function() {
         // else if (keyPressed == 83) {
         //  $(player1).animate({top: "+=5"}, 0);
         // }
+        ////////////////////////////////////////////////////////////////////////
+        // Player 2 Controls
         // 'l' moves left
         else if (keyPressed == 76) {
             $(player2).animate({right: "+=5"}, 0);
@@ -270,7 +276,7 @@ $( document ).ready(function() {
       $('.end-screen').css('visibility', 'visible');
       $('.fight-screen').css('visibility', 'hidden');
       // HP Reduction
-      p2HPVal -= 10;
+      p2HPVal -= 50;
       p2HPSpan.html(p2HPVal);
       checkWin();
     });
@@ -287,23 +293,28 @@ $( document ).ready(function() {
   // * Win-Case:
     // if Player 1 HP <= 0, Player 2 Wins
     // else if Player 2 HP <= 0, Player 1 Wins
-    let winner
     let checkWin = function () {
+      // Player 1 Wins
       if (p2HPVal <= 0) {
-        // alert('Player 1 wins!');
+        $('#winnerBox').text(`${p1} Wins!`);
         $('.end-screen').css('visibility', 'visible');
         $('.fight-screen').css('visibility', 'hidden');
-        return winner = p1;
-        winnerDisplay();
       }
+      // Player 2 Wins
       else if (p1HPVal <= 0) {
-        alert(`Player 2 wins!`);
+        $('#winnerBox').text(`${p2} Wins!`);
         $('.end-screen').css('visibility', 'visible');
         $('.fight-screen').css('visibility', 'hidden');
-        return winner = p2;
-        winnerDisplay();
       }
+      // Draw Clause
+      // else if (p1HPVal > 0 && p2HPVal > 0) {
+      // $('#winnerBox').text(`It's a draw`);
+      // $('.end-screen').css('visibility', 'visible');
+      // $('.fight-screen').css('visibility', 'hidden');
+      // }
+
     }
+    // checkWin();
   }
 // /////////////////////////////////////////////////////////////////////////////
 // End Screen
@@ -318,20 +329,17 @@ $( document ).ready(function() {
   // reCall .fight-screen
   // init fight();
 */
-  function winnerDisplay () {
-  $('#winner').text(`${winner} wins!`)
   // For clickable Model ONLY
   // *** Replay(for testing and debugging)
   // Button - On click load .end-screen
-  }
   $('#replay-btn').on('click', function(){
-    console.log('Fight start!');
+    // console.log('Fight start!');
     $('.end-screen').css('visibility', 'hidden');
     $('.fight-screen').css('visibility', 'visible');
     fight();
    });
   $('#landing-btn').on('click', function(){
-    console.log('Fight start!');
+    // console.log('Fight start!');
     $('.end-screen').css('visibility', 'hidden');
     $('.landing-screen').css('visibility', 'visible');
    });
