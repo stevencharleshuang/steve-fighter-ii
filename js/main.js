@@ -104,20 +104,20 @@ $( document ).ready(function() {
     player2.css({'right': '100px', 'background-color': 'green'});
     // Motion Controls
     // https://stackoverflow.com/questions/7298507/move-element-with-keypress-multiple
-    let keys  = {}
-
+    let keys = {};
     $(document).keydown(function(e) {
       keys[e.keyCode] = true;
     });
-
     $(document).keyup(function(e) {
         delete keys[e.keyCode];
     });
     function movePlayer() {
+      let player1BCR = player1[0].getBoundingClientRect();
+      let player2BCR = player2[0].getBoundingClientRect();
       for (let direction in keys) {
         if (!keys.hasOwnProperty(direction)) continue;
         // 'a' moves left
-        else if (direction == 65) {
+        else if (direction == 65 && (player1BCR.x > 15)) {
             $(player1).animate({left: "-=5"}, 0);
             hitDetect();
         }
@@ -144,7 +144,7 @@ $( document ).ready(function() {
             // $(player2).animate({top: "-=5"}, 0);
         // }
         // ''' moves right
-        else if (direction == 222) {
+        else if (direction == 222 && (player2BCR.x < 665)) {
             $(player2).animate({left: "+=5"}, 0);
             hitDetect();
         }
@@ -169,16 +169,16 @@ $( document ).ready(function() {
       // Hit Detection Clauses
         console.log('hit detected!');
         // Divs change color
-        player1.css('background-color', 'red')
-        player2.css('background-color', 'pink')
+        $(player1).css('background-color', 'red');
+        $(player2).css('background-color', 'pink');
         // Divs pop back after hit
         $(player1).animate({left: "-=5"}, 0);
         $(player2).animate({left: "+=5"}, 0);
       }
       // Non-Hit Clauses
       else {
-        player1.css('background-color', 'blue')
-        player2.css('background-color', 'green')
+        $(player1).css('background-color', 'blue');
+        $(player2).css('background-color', 'green');
       }
       // console.log(player1BCR);
       // console.log(blueBCR)
@@ -188,13 +188,13 @@ $( document ).ready(function() {
     // else if Player 2 HP <= 0, Player 1 Wins
   // * Call fight();
 
-    // *** Cheat Win (for testing and debugging)
-      // Button - On click load .end-screen
-      $('#cheat-btn').on('click', function(){
-        console.log('Fight start!');
-        $('.end-screen').css('visibility', 'visible');
-        $('.fight-screen').css('visibility', 'hidden');
-       });
+  // *** Cheat Win (for testing and debugging)
+    // Button - On click load .end-screen
+    $('#cheat-btn').on('click', function() {
+      console.log('Fight start!');
+      $('.end-screen').css('visibility', 'visible');
+      $('.fight-screen').css('visibility', 'hidden');
+    });
   }
 // /////////////////////////////////////////////////////////////////////////////
 // End Screen
