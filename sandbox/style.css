@@ -30,19 +30,19 @@ body {
 }
 .blue-box {
   position: absolute;
-  display: inline-block;
+  /*display: inline-block;*/
   background-color: blue;
-/*  top: 300px;
-  right: 100px;*/
+  top: 300px;
+  left: 100px;
   height: 300px;
   width: 150px;
 }
 .green-box {
   position: absolute;
-  display: inline-block;
+  /*display: inline-block;*/
   background-color: green;
-/*  top: 300px;
-  left: 100px;*/
+  top: 300px;
+  right: 100px;
   height: 300px;
   width: 150px;
 }
