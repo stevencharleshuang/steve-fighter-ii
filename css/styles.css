@@ -75,10 +75,11 @@ body {
   width: 800px;
   border-radius: 10px;
   background-color: rgba(100,100,100,.7);
+  overflow: hidden;
   visibility: hidden;
 }
 .battle-arena {
-  background-color: white;
+  /*background-color: white;*/
   height: 600px;
   width: 800px;
 }

@@ -51,6 +51,7 @@ $( document ).ready(function() {
     console.log('start!');
     $('.fight-screen').css('visibility', 'visible');
     $('.landing-screen').css('visibility', 'hidden');
+    fight();
   });
 // /////////////////////////////////////////////////////////////////////////////
 // Fight Screen
@@ -96,68 +97,71 @@ $( document ).ready(function() {
             */
   // Hit Detection Solution
   // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
-  let player1 = $('.player-1');
-  let player2 = $('.player-2');
-  // Motion Controls
-  // https://stackoverflow.com/questions/7298507/move-element-with-keypress-multiple
-  let keys  = {}
+  const fight = function () {
+    let player1 = $('.player-1');
+    let player2 = $('.player-2');
+    player1.css({'left': '100px', 'background-color': 'blue'});
+    player2.css({'right': '100px', 'background-color': 'green'});
+    // Motion Controls
+    // https://stackoverflow.com/questions/7298507/move-element-with-keypress-multiple
+    let keys  = {}
 
-  $(document).keydown(function(e) {
-    keys[e.keyCode] = true;
-  });
+    $(document).keydown(function(e) {
+      keys[e.keyCode] = true;
+    });
 
-  $(document).keyup(function(e) {
-      delete keys[e.keyCode];
-  });
+    $(document).keyup(function(e) {
+        delete keys[e.keyCode];
+    });
     function movePlayer() {
       for (let direction in keys) {
-          if (!keys.hasOwnProperty(direction)) continue;
-          // 'a' moves left
-          else if (direction == 65) {
-              $(player1).animate({left: "-=5"}, 0);
-              hitDetect();
-          }
-          // 'w' moves up
-          // else if (direction == 87) {
-          //  $(player1).animate({top: "-=5"}, 0);
-          // }
-          // 'd' moves right
-          else if (direction == 68) {
-              $(player1).animate({left: "+=5"}, 0);
-              hitDetect();
-          }
-          // 's' moves down
-          // else if (direction == 83) {
-          //  $(player1).animate({top: "+=5"}, 0);
-          // }
-          // 'l' moves left
-          else if (direction == 76) {
-              $(player2).animate({left: "-=5"}, 0);
-              hitDetect();
-          }
-          // 'p' moves up
-          // else if (direction == 80) {
-              // $(player2).animate({top: "-=5"}, 0);
-          // }
-          // ''' moves right
-          else if (direction == 222) {
-              $(player2).animate({left: "+=5"}, 0);
-              hitDetect();
-          }
-          // ';' moves down
-          // else if (direction == 186) {
-          //     $(player2).animate({top: "+=5"}, 0);
-          // }
+        if (!keys.hasOwnProperty(direction)) continue;
+        // 'a' moves left
+        else if (direction == 65) {
+            $(player1).animate({left: "-=5"}, 0);
+            hitDetect();
+        }
+        // 'w' moves up
+        // else if (direction == 87) {
+        //  $(player1).animate({top: "-=5"}, 0);
+        // }
+        // 'd' moves right
+        else if (direction == 68) {
+            $(player1).animate({left: "+=5"}, 0);
+            hitDetect();
+        }
+        // 's' moves down
+        // else if (direction == 83) {
+        //  $(player1).animate({top: "+=5"}, 0);
+        // }
+        // 'l' moves left
+        else if (direction == 76) {
+            $(player2).animate({left: "-=5"}, 0);
+            hitDetect();
+        }
+        // 'p' moves up
+        // else if (direction == 80) {
+            // $(player2).animate({top: "-=5"}, 0);
+        // }
+        // ''' moves right
+        else if (direction == 222) {
+            $(player2).animate({left: "+=5"}, 0);
+            hitDetect();
+        }
+        // ';' moves down
+        // else if (direction == 186) {
+        //     $(player2).animate({top: "+=5"}, 0);
+        // }
       }
-  }
-  movePlayer();
-  setInterval(movePlayer, 10);
-  /////////////////////////////
-  // Hit collision from scratch
-  let hitDetect = function () {
-    let player1BCR = player1[0].getBoundingClientRect();
-    let player2BCR = player2[0].getBoundingClientRect();
-    // console.log(player2BCR);
+    }
+    movePlayer();
+    setInterval(movePlayer, 10);
+    /////////////////////////////
+    // Hit collision from scratch
+    let hitDetect = function () {
+      let player1BCR = player1[0].getBoundingClientRect();
+      let player2BCR = player2[0].getBoundingClientRect();
+      // console.log(player2BCR);
       if (player1BCR.x < player2BCR.x + player2BCR.width &&
       player1BCR.x + player1BCR.width > player2BCR.x &&
       player1BCR.y < player2BCR.y + player2BCR.height &&
@@ -176,22 +180,22 @@ $( document ).ready(function() {
         player1.css('background-color', 'blue')
         player2.css('background-color', 'green')
       }
-    // console.log(player1BCR);
-    // console.log(blueBCR)
+      // console.log(player1BCR);
+      // console.log(blueBCR)
+    }
+  // * Win-Case:
+    // if Player 1 HP <= 0, Player 2 Wins
+    // else if Player 2 HP <= 0, Player 1 Wins
+  // * Call fight();
+
+    // *** Cheat Win (for testing and debugging)
+      // Button - On click load .end-screen
+      $('#cheat-btn').on('click', function(){
+        console.log('Fight start!');
+        $('.end-screen').css('visibility', 'visible');
+        $('.fight-screen').css('visibility', 'hidden');
+       });
   }
-// * Win-Case:
-  // if Player 1 HP <= 0, Player 2 Wins
-  // else if Player 2 HP <= 0, Player 1 Wins
-// * Call fight();
-
-  // *** Cheat Win (for testing and debugging)
-    // Button - On click load .end-screen
-    $('#cheat-btn').on('click', function(){
-      console.log('Fight start!');
-      $('.end-screen').css('visibility', 'visible');
-      $('.fight-screen').css('visibility', 'hidden');
-     });
-
 // /////////////////////////////////////////////////////////////////////////////
 // End Screen
 // /////////////////////////////////////////////////////////////////////////////
@@ -212,6 +216,7 @@ $( document ).ready(function() {
       console.log('Fight start!');
       $('.end-screen').css('visibility', 'hidden');
       $('.fight-screen').css('visibility', 'visible');
+      fight();
      });
     $('#landing-btn').on('click', function(){
       console.log('Fight start!');
