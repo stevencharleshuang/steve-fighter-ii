@@ -37,7 +37,7 @@ function moveSq() {
         // 'd' moves right
         else if (direction == 68) {
             $(blueBox).animate({left: "+=5"}, 0);
-            getBlueBCR();
+            // getBlueBCR();
             // getGreenBCR();
             hitDetect();
         }
@@ -59,7 +59,7 @@ function moveSq() {
         // ''' moves right
         else if (direction == 222) {
             $(greenBox).animate({left: "+=5"}, 0);
-            getBlueBCR();
+            // getBlueBCR();
             // getGreenBCR();
             hitDetect();
         }
@@ -79,15 +79,21 @@ let hitDetect = function () {
   let greenBCR = greenBox[0].getBoundingClientRect();
   // console.log(greenBCR);
     if (blueBCR.x < greenBCR.x + greenBCR.width &&
-     blueBCR.x + blueBCR.width > greenBCR.x &&
-     blueBCR.y < greenBCR.y + greenBCR.height &&
-     blueBCR.height + blueBCR.y > greenBCR.y) {
-      alert('collision detected!');
+    blueBCR.x + blueBCR.width > greenBCR.x &&
+    blueBCR.y < greenBCR.y + greenBCR.height &&
+    blueBCR.height + blueBCR.y > greenBCR.y) {
+      console.log('hit detected!');
+      blueBox.css('background-color', 'red')
+      greenBox.css('background-color', 'pink')
+    }
+    else {
+      blueBox.css('background-color', 'blue')
+      greenBox.css('background-color', 'green')
     }
   // console.log(blueBCR);
-  console.log(blueBCR)
-  return blueBCR;
+  // console.log(blueBCR)
 }
+
 // let getGreenBCR = function () {
 //   let greenBCR = greenBox[0].getBoundingClientRect();
 //   // console.log(greenBCR);
