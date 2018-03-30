@@ -116,7 +116,7 @@ $( document ).ready(function() {
       for (let keyPressed in keys) {
         if (!keys.hasOwnProperty(keyPressed)) continue;
         // 'a' moves left
-        else if (keyPressed == 65 && (player1BCR.x > 110)) {
+        else if (keyPressed == 65 && (player1BCR.x > 220)) {
             $(player1).animate({left: "-=5"}, 0);
             hitDetect();
         }
@@ -143,7 +143,7 @@ $( document ).ready(function() {
             // $(player2).animate({top: "-=5"}, 0);
         // }
         // ''' moves right
-        else if (keyPressed == 222 && (player2BCR.x < 755)) {
+        else if (keyPressed == 222 && (player2BCR.x < 880)) {
             $(player2).animate({left: "+=5"}, 0);
             hitDetect();
         }
@@ -151,18 +151,19 @@ $( document ).ready(function() {
         // else if (keyPressed == 186) {
         //     $(player2).animate({top: "+=5"}, 0);
         // }
+
         // /////////////////////////////////////////////////////////////////////
         // Player attacks
         // Punch 'e'
         else if (keyPressed == 69) {
-            $(player1).css('width', '250');
+            $(player1).css('width', '225');
             $(document).keyup(function(){
               $(player1).css('width', '150')
             });
         }
         // Punch 'o'
         else if (keyPressed == 79) {
-            $(player2).css('width', '250');
+            $(player2).css('width', '225');
             $(document).keyup(function(){
               $(player2).css('width', '150')
             });
@@ -199,18 +200,27 @@ $( document ).ready(function() {
       // console.log(player1BCR);
       // console.log(blueBCR)
     }
-  // * Win-Case:
-    // if Player 1 HP <= 0, Player 2 Wins
-    // else if Player 2 HP <= 0, Player 1 Wins
-  // * Call fight();
-
+    // /////////////////////////////////////////////////////////////////////////
+    // HP System
+    // Target
+    let p1HPSpan = $('#p1-hp-span');
+    let p1HPVal = 100
+    p1HPSpan.html(p1HPVal);
+    let p2HPSpan = $('#p2-hp-span');
+    let p2HPVal = 100
+    p2HPSpan.html(p2HPVal);
   // *** Cheat Win (for testing and debugging)
     // Button - On click load .end-screen
     $('#cheat-btn').on('click', function() {
-      console.log('Fight start!');
-      $('.end-screen').css('visibility', 'visible');
-      $('.fight-screen').css('visibility', 'hidden');
+      // $('.end-screen').css('visibility', 'visible');
+      // $('.fight-screen').css('visibility', 'hidden');
+      // HP Reduction
+      p1HPVal -= 10;
+      p1HPSpan.html(p1HPVal);
     });
+  // * Win-Case:
+    // if Player 1 HP <= 0, Player 2 Wins
+    // else if Player 2 HP <= 0, Player 1 Wins
   }
 // /////////////////////////////////////////////////////////////////////////////
 // End Screen

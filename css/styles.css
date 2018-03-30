@@ -110,9 +110,10 @@ body {
   /*display: inline-block;*/
   background-color: green;
   top: 300px;
-  left: 550px;
+  right: 550px;
   height: 300px;
   width: 150px;
+  text-align: center;
   /*direction: rtl;*/
 }
 .player-1-hp {
