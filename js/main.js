@@ -100,7 +100,7 @@ $( document ).ready(function() {
     let player1 = $('.player-1');
     let player2 = $('.player-2');
     player1.css({'left': '100px', 'background-color': 'blue'});
-    player2.css({'left': '550px', 'background-color': 'green'});
+    player2.css({'right': '100px', 'background-color': 'green'});
     // /////////////////////////////////////////////////////////////////
     // Player Name Display
     // Name Displays
@@ -152,7 +152,7 @@ $( document ).ready(function() {
         // }
         // 'l' moves left
         else if (keyPressed == 76) {
-            $(player2).animate({left: "-=5"}, 0);
+            $(player2).animate({right: "+=5"}, 0);
             hitDetect();
         }
         // 'p' moves up
@@ -161,7 +161,7 @@ $( document ).ready(function() {
         // }
         // ''' moves right
         else if (keyPressed == 222 && (player2BCR.x < 880)) {
-            $(player2).animate({left: "+=5"}, 0);
+            $(player2).animate({right: "-=5"}, 0);
             hitDetect();
         }
         // ';' moves down
@@ -226,7 +226,7 @@ $( document ).ready(function() {
         // Prevent Div Overlap
         // Divs pop back after hit
         $(player1).animate({left: '-=3'}, 0);
-        $(player2).animate({left: '+=3'}, 0);
+        $(player2).animate({right: '-=3'}, 0);
         return true;
       }
       // Non-Hit Clauses
