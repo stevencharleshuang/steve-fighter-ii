@@ -73,7 +73,7 @@ $( document ).ready(function() {
       'width': '150px'});
     player2.css({'right': '100px', 'background-color': 'green',
       'width': '150px'});
-  // /////////////////////////////////////////////////////////////////////////
+  // ///////////////////////////////////////////////////////////////////////////
   // HP System
   // Initialize HP values
     let p1HPVal = 50;
@@ -84,7 +84,7 @@ $( document ).ready(function() {
     // Update HP Span Values
     p1HPSpan.html(p1HPVal);
     p2HPSpan.html(p2HPVal);
-  // /////////////////////////////////////////////////////////////////
+  // ///////////////////////////////////////////////////////////////////////////
   // Player Name Display
   // Name Displays
     if (p1!==undefined) {
@@ -101,7 +101,7 @@ $( document ).ready(function() {
       p2 = 'Player 2';
       $('.player-2-name').text(`Player 2`);
     }
-  // /////////////////////////////////////////////////////////////////
+  // ///////////////////////////////////////////////////////////////////////////
   // Player Controls
   // https://stackoverflow.com/questions/7298507/move-element-with-keypress-multiple
     let keys = {};
@@ -113,15 +113,17 @@ $( document ).ready(function() {
     });
     let playerMoves = function () {
       let player1BCR = player1[0].getBoundingClientRect();
-      let arenaLeftWall = $('.battle-arena')[0].getBoundingClientRect()
       let player2BCR = player2[0].getBoundingClientRect();
+      let arenaLeftWall = $('.battle-arena')[0].getBoundingClientRect()
       let arenaRightWall = $('.battle-arena')[0].getBoundingClientRect()
       for (let keyPressed in keys) {
         if (!keys.hasOwnProperty(keyPressed)) continue;
-    ////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
     // Player 1 Controls
         // 'a' moves left
-        else if (keyPressed == 65 && (p1HPVal > 0 || p2HPVal > 0) && (player1BCR.left > arenaLeftWall.left)) {
+        else if (keyPressed == 65 && (p1HPVal > 0 || p2HPVal > 0) &&
+          // Prevent P1 From Moving Past Left Arena Wall
+          (player1BCR.left > arenaLeftWall.left)) {
             $(player1).animate({left: "-=5"}, 0);
             hitDetect();
         }
@@ -130,7 +132,11 @@ $( document ).ready(function() {
         //  $(player1).animate({top: "-=5"}, 0);
         // }
         // 'd' moves right
-        else if (keyPressed == 68 && (p1HPVal > 0 || p2HPVal > 0) && (player2BCR.right <= arenaRightWall.right)) {
+        else if (keyPressed == 68 && (p1HPVal > 0 || p2HPVal > 0) &&
+          // Prevent Pushing P2 Div Past Right Arena Wall
+          (player2BCR.right <= arenaRightWall.right) &&
+          // Prevent Div Overlap
+          (player1BCR.right <= (player2BCR.left + 10))) {
             $(player1).animate({left: "+=5"}, 0);
             hitDetect();
         }
@@ -138,10 +144,14 @@ $( document ).ready(function() {
         // else if (keyPressed == 83) {
         //  $(player1).animate({top: "+=5"}, 0);
         // }
-    ////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
     // Player 2 Controls
         // 'l' moves left
-        else if (keyPressed == 76 && (p1HPVal > 0 || p2HPVal > 0) && (player1BCR.left > arenaLeftWall.left)) {
+        else if (keyPressed == 76 && (p1HPVal > 0 || p2HPVal > 0) &&
+          // Prevent Pushing P1 Div Past Left Arena Wall
+          (player1BCR.left >= arenaLeftWall.left) &&
+          // Prevent Div Overlap
+          (player2BCR.left >= (player1BCR.right - 10))) {
             $(player2).animate({right: "+=5"}, 0);
             hitDetect();
         }
@@ -150,19 +160,22 @@ $( document ).ready(function() {
             // $(player2).animate({top: "-=5"}, 0);
         // }
         // ''' moves right
-        else if (keyPressed == 222 && (p1HPVal > 0 || p2HPVal > 0) && (player2BCR.right < arenaRightWall.right)) {
+        else if (keyPressed == 222 && (p1HPVal > 0 || p2HPVal > 0) &&
+          // Prevent P2 From Moving Past Right Arena Wall
+          (player2BCR.right < arenaRightWall.right)) {
             $(player2).animate({right: "-=5"}, 0);
             hitDetect();
         }
-        // ';' moves down
+
+        // ';' movaes down
         // else if (keyPressed == 186) {
         //     $(player2).animate({top: "+=5"}, 0);
         // }
-      
+
         }
       }
-    
-    // /////////////////////////////////////////////////////////////////////
+
+    // /////////////////////////////////////////////////////////////////////////
     // Player attacks
     let playerAttacks = function () {
         $(window).on('keydown', function (e) {
@@ -197,11 +210,11 @@ $( document ).ready(function() {
           });
         }
       });
-    } 
+    }
     playerMoves();
     playerAttacks();
     setInterval(playerMoves, 10);
-  // /////////////////////////////////////////////////////////////////////////
+  // ///////////////////////////////////////////////////////////////////////////
   // Hit collision from scratch
   // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
     let hitDetect = function () {
@@ -212,17 +225,20 @@ $( document ).ready(function() {
       player1BCR.x + player1BCR.width > player2BCR.x &&
       player1BCR.y < player2BCR.y + player2BCR.height &&
       player1BCR.height + player1BCR.y > player2BCR.y) {
-    //////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
     // Hit Detection Clauses
         // console.log('hit detected!');
         // Divs change color
         $(player1).css('background-color', 'red');
         $(player2).css('background-color', 'pink');
-    ////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
     // Prevent Div Overlap
+        ///// New /////
+        // if player1BCR.
+        ///// Old /////
         // Divs pop back after hit
-        $(player1).animate({left: '-=3'}, 0);
-        $(player2).animate({right: '-=3'}, 0);
+        // $(player1).animate({left: '-=3'}, 0);
+        // $(player2).animate({right: '-=3'}, 0);
         return true;
       }
       // Non-Hit Clauses
@@ -233,7 +249,7 @@ $( document ).ready(function() {
       // console.log(player1BCR);
       // console.log(blueBCR)
     }
-  ////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
   // Test Hit Buttons
     // P1 Hit P2 Button
     $('#hit-player2').on('click', function() {
@@ -285,7 +301,6 @@ $( document ).ready(function() {
       if (p2HPVal <= 0) {
         // console.log('player 1 wins')
         playerMoves();
-        
         playerAttacks();
         p1Damage();
         p2Damage();
@@ -302,7 +317,6 @@ $( document ).ready(function() {
         // console.log('player 2 wins')
         $('#winnerBox').text(`${p2} Wins!`);
         playerMoves();
-        
         playerAttacks();
         p1Damage();
         p2Damage();
