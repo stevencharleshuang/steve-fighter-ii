@@ -37,6 +37,8 @@ $( document ).ready(function() {
       // Remove p2 form, replace with name text
     $('#player2-input').replaceWith(`Player 2: <br/>${p2Name}`);
   });
+  // P1 Name Reset
+  // P2 Name Reset
   // Start Button
   $('#start-btn').on('click', function(){
     // console.log('start!');
