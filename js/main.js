@@ -308,6 +308,18 @@ $( document ).ready(function() {
       }
     }
   //////////////////////////////////////////////////////////////////////////////
+  // *** PostMVP Timer
+    let timerBox = $('.timer-box');
+    let timer = 99;
+    let tickDown = setInterval(function () {
+      timer -= 1;
+      timerBox.text(timer);
+      // On TimeOut
+      if (timer === 0) {
+        checkWin();
+      }
+    }, 1000)
+  //////////////////////////////////////////////////////////////////////////////
   // * Win-Case:
     // if Player 1 HP <= 0, Player 2 Wins
     // else if Player 2 HP <= 0, Player 1 Wins
@@ -315,13 +327,20 @@ $( document ).ready(function() {
       // Player 1 Wins
       if (p2HPVal == 0) {
         console.log('player 1 wins')
+        // Stops Post Match hitting
         p1HPVl = 0;
         p2HPVl = 0;
+        // Stop Timer
+        clearInterval(tickDown);
+        // Re-inits Timer
+        timer = 99;
+        timerBox.text(timer);
+        // Winner Decs
         $('#winnerBox').text(`${p1Name} Wins!`);
         $('.end-screen').css('visibility', 'visible');
         $('.fight-screen').css('visibility', 'hidden');
-        $(player1).css('width', '150');
-        $(player2).css('width', '150');
+        // $(player1).css('width', '150');
+        // $(player2).css('width', '150');
       }
       // Player 2 Wins
       else if (p1HPVal == 0) {
@@ -329,17 +348,25 @@ $( document ).ready(function() {
         $('#winnerBox').text(`${p2Name} Wins!`);
         p1HPVal = 0;
         p2HPVal = 0;
+        clearInterval(tickDown);
+        timer = 99;
+        timerBox.text(timer);
         $('.end-screen').css('visibility', 'visible');
         $('.fight-screen').css('visibility', 'hidden');
-        $(player1).css('width', '150');
-        $(player2).css('width', '150');
+        // $(player1).css('width', '150');
+        // $(player2).css('width', '150');
       }
       // Draw Clause
-      // else if (p1HPVal > 0 && p2HPVal > 0) {
-      // $('#winnerBox').text(`It's a draw`);
-      // $('.end-screen').css('visibility', 'visible');
-      // $('.fight-screen').css('visibility', 'hidden');
-      // }
+      else if (timer === 0 && (p1HPVal > 0 && p2HPVal > 0)) {
+      $('#winnerBox').text(`It\'s A Draw. You Both Lose =(`);
+      p1HPVal = 0;
+      p2HPVal = 0;
+      clearInterval(tickDown);
+      timer = 99;
+      timerBox.text(timer);
+      $('.end-screen').css('visibility', 'visible');
+      $('.fight-screen').css('visibility', 'hidden');
+      }
     // Closes checkWin()
     }
   // Closes Fight Function

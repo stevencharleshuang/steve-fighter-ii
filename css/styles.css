@@ -119,19 +119,32 @@ body {
 }
 .player-1-hp {
   position: absolute;
+  top: 0;
+  left: 50px;
   background-color: yellow;
   padding: 5px;
   font-size: 25px;
-  left: 50px;
   border: 1px solid black;
 }
 .player-2-hp {
   position: absolute;
+  top: 0;
+  right: 50px;
   background-color: yellow;
   padding: 5px;
-  left: 525px;
   font-size: 25px;
   border: 1px solid black;
+}
+.timer-box {
+  position: relative;
+  top: 10px;
+  color: orange;
+  text-shadow: 2px 2px #808;
+  margin: 0 auto;
+  font-size: 50px;
+  width: 100px;
+  height: auto;
+  border: 1px black solid;
 }
 .player-1-controls {
   font-size: 20px;
@@ -194,6 +207,7 @@ body {
   margin: 0 auto;
 }
 /* Testing Only */
+#cheat-btn {position: relative; top: 100px;}
 #hit-player2 {position: absolute;top: 200px; left:100px;}
 #hit-player1 {position: absolute;top: 200px; right:100px;}
 button {
