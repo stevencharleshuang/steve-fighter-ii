@@ -79,8 +79,8 @@ $( document ).ready(function() {
   // ///////////////////////////////////////////////////////////////////////////
   // HP System
   // Initialize HP values
-    let p1HPVal = 50;
-    let p2HPVal = 50;
+    let p1HPVal = 75;
+    let p2HPVal = 75;
     // Target HP Spans
     let p1HPSpan = $('#p1-hp-span');
     let p2HPSpan = $('#p2-hp-span');
@@ -182,15 +182,22 @@ $( document ).ready(function() {
     // /////////////////////////////////////////////////////////////////////////
     // Player attacks
     const playerAttacks = function () {
+      let player1BCR = player1[0].getBoundingClientRect();
+      let player2BCR = player2[0].getBoundingClientRect();
         $(window).on('keydown', function (e) {
-        // Punch 'e'
+        ////////////////////////////////////////////////////////////////////////
+        // Player 1
+        // Punch - 'e'
         if (e.keyCode == 69) {
           // Increase div width
           $(player1).css('width', '225');
             if (hitDetect()===true && (p1HPVal > 0 && p2HPVal > 0)) {
               $(player1).css('background-color', 'yellow');
               // console.log('punch');
-              p2Damage();
+              if (p2HPVal > 0) {
+                p2HPVal -= 5;
+                p2HPSpan.text(p2HPVal);
+              }
               checkWin();
               console.log(`P2 HP: ${p2HPVal}`)
             }
@@ -199,6 +206,21 @@ $( document ).ready(function() {
             $(player1).css('width', '150');
           });
         }
+        // Block - 'q'
+        else if (e.keyCode == 81) {
+          // Increase div width
+          if (p1HPVal > 0 && p2HPVal > 0) {
+            $(player1).css({'width': '155','background-color': 'purple'});
+            // console.log('block');
+            // console.log(`P1 HP: ${p1HPVal}`)
+          }
+          // Return to original Div width
+          $(document).keyup(function(){
+            $(player1).css({'width': '150','background-color': 'blue'});
+          });
+        }
+        ////////////////////////////////////////////////////////////////////////
+        // Player 2
         // Punch 'o'
         else if (e.keyCode == 79) {
           // Increase div width
@@ -206,7 +228,10 @@ $( document ).ready(function() {
           if (hitDetect()===true && (p1HPVal > 0 && p2HPVal > 0)) {
             $(player2).css('background-color', 'yellow');
             // console.log('punch');
-            p1Damage();
+            if (p1HPVal > 0 && player1BCR.width !== 155) {
+              p1HPVal -= 5;
+              p1HPSpan.text(p1HPVal);
+            }
             checkWin();
             console.log(`P1 HP: ${p1HPVal}`)
           }
@@ -215,6 +240,7 @@ $( document ).ready(function() {
             $(player2).css('width', '150');
           });
         }
+      // Closes Evt Listener
       });
     // Closes playerAttacks()
     }
@@ -237,14 +263,6 @@ $( document ).ready(function() {
         // Divs change color
         $(player1).css('background-color', 'red');
         $(player2).css('background-color', 'pink');
-    ////////////////////////////////////////////////////////////////////////////
-    // Prevent Div Overlap
-        ///// New /////
-        // if player1BCR.
-        ///// Old /////
-        // Divs pop back after hit
-        // $(player1).animate({left: '-=3'}, 0);
-        // $(player2).animate({right: '-=3'}, 0);
         return true;
       }
       // Non-Hit Clauses
@@ -287,7 +305,7 @@ $( document ).ready(function() {
       $('.fight-screen').css('visibility', 'hidden');
       if (p1HPVal > 0 && p2HPVal > 0) {
         // HP Reduction
-        p2HPVal -= 50;
+        p2HPVal -= 75;
         p2HPSpan.text(p2HPVal);
         checkWin();
       }
