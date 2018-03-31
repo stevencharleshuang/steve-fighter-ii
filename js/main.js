@@ -17,28 +17,28 @@ $( document ).ready(function() {
 */
   // Get Player Names
   // Player Name Storage
-  let p1;
-  let p2;
+  let p1Name;
+  let p2Name;
   // Target #player1-input and #player2-input
   let p1Input = $('#player1-input');
   let p2Input = $('#player2-input');
   // p1 Form Event Listener
   $('#p1-nameSubmit').click(function(event) {
     // Get Name text
-    p1 = document.getElementById('p1Name').value;
+    p1Name = $('#player1-name').val();
     // Remove p1 form, replace with name text
-    $('#player1-input').replaceWith(`Player 1: <br/>${p1}`);
+    $('#player1-input').replaceWith(`Player 1: <br/>${p1Name}`);
   });
   // p2 Form Event Listener
   $('#p2-nameSubmit').click(function(event) {
     // Get Name text
-    p2 = document.getElementById('p2Name').value;
+    p2Name = $('#player2-name').val();
       // Remove p2 form, replace with name text
-    $('#player2-input').replaceWith(`Player 2: <br/>${p2}`);
+    $('#player2-input').replaceWith(`Player 2: <br/>${p2Name}`);
   });
   // Start Button
   $('#start-btn').on('click', function(){
-    console.log('start!');
+    // console.log('start!');
     $('.fight-screen').css('visibility', 'visible');
     $('.landing-screen').css('visibility', 'hidden');
     fight();
@@ -87,18 +87,18 @@ $( document ).ready(function() {
   // ///////////////////////////////////////////////////////////////////////////
   // Player Name Display
   // Name Displays
-    if (p1!==undefined) {
-      $('.player-1-name').text(`${p1}`);
+    if (p1Name!==undefined) {
+      $('.player-1-name').text(`${p1Name}`);
     }
     else {
-      p1 = 'Player 1';
+      p1Name = 'Player 1';
       $('.player-1-name').text(`Player 1`);
     }
-    if (p2!==undefined) {
-      $('.player-2-name').text(`${p2}`);
+    if (p2Name!==undefined) {
+      $('.player-2-name').text(`${p2Name}`);
     }
     else {
-      p2 = 'Player 2';
+      p2Name = 'Player 2';
       $('.player-2-name').text(`Player 2`);
     }
   // ///////////////////////////////////////////////////////////////////////////
@@ -167,17 +167,18 @@ $( document ).ready(function() {
             hitDetect();
         }
 
-        // ';' movaes down
+        // ';' moves down
         // else if (keyPressed == 186) {
         //     $(player2).animate({top: "+=5"}, 0);
         // }
-
-        }
+      // Closes for-continue
       }
+    // Closes playerMoves()
+    }
 
     // /////////////////////////////////////////////////////////////////////////
     // Player attacks
-    let playerAttacks = function () {
+    const playerAttacks = function () {
         $(window).on('keydown', function (e) {
         // Punch 'e'
         if (e.keyCode == 69) {
@@ -210,8 +211,9 @@ $( document ).ready(function() {
           });
         }
       });
+    // Closes playerAttacks()
     }
-    playerMoves();
+    // playerMoves();
     playerAttacks();
     setInterval(playerMoves, 10);
   // ///////////////////////////////////////////////////////////////////////////
@@ -248,6 +250,7 @@ $( document ).ready(function() {
       }
       // console.log(player1BCR);
       // console.log(blueBCR)
+    // Closes hitDetect()
     }
   //////////////////////////////////////////////////////////////////////////////
   // Test Hit Buttons
@@ -257,7 +260,7 @@ $( document ).ready(function() {
       // $('.fight-screen').css('visibility', 'hidden');
       // HP Reduction
       p2HPVal -= 10;
-      p2HPSpan.html(p2HPVal);
+      p2HPSpan.text(p2HPVal);
       checkWin();
     });
     // P2 Hit P1 Button
@@ -267,7 +270,7 @@ $( document ).ready(function() {
       // console.log(p1HPVal)
       // HP Reduction
       p1HPVal -= 10;
-      p1HPSpan.html(p1HPVal);
+      p1HPSpan.text(p1HPVal);
       checkWin();
     });
     // *** Cheat Win (for testing and debugging)
@@ -276,7 +279,7 @@ $( document ).ready(function() {
       $('.fight-screen').css('visibility', 'hidden');
       // HP Reduction
       p2HPVal -= 50;
-      p2HPSpan.html(p2HPVal);
+      p2HPSpan.text(p2HPVal);
       checkWin();
     });
     ////////////////////////////////////////////////////////////////////////////
@@ -284,14 +287,14 @@ $( document ).ready(function() {
     let p1Damage = function () {
       // console.log(p1HPVal)
       p1HPVal -= 5;
-      p1HPSpan.html(p1HPVal);
+      p1HPSpan.text(p1HPVal);
     }
     let p2Damage = function () {
       p2HPVal -= 5;
-      p2HPSpan.html(p2HPVal);
+      p2HPSpan.text(p2HPVal);
     }
-    p1Damage();
-    p2Damage();
+    // p1Damage();
+    // p2Damage();
   //////////////////////////////////////////////////////////////////////////////
   // * Win-Case:
     // if Player 1 HP <= 0, Player 2 Wins
@@ -300,13 +303,9 @@ $( document ).ready(function() {
       // Player 1 Wins
       if (p2HPVal <= 0) {
         // console.log('player 1 wins')
-        playerMoves();
-        playerAttacks();
-        p1Damage();
-        p2Damage();
         p1HPVal = 50;
         p2HPVal = 50;
-        $('#winnerBox').text(`${p1} Wins!`);
+        $('#winnerBox').text(`${p1Name} Wins!`);
         $('.end-screen').css('visibility', 'visible');
         $('.fight-screen').css('visibility', 'hidden');
         $(player1).css('width', '150');
@@ -315,11 +314,7 @@ $( document ).ready(function() {
       // Player 2 Wins
       else if (p1HPVal <= 0) {
         // console.log('player 2 wins')
-        $('#winnerBox').text(`${p2} Wins!`);
-        playerMoves();
-        playerAttacks();
-        p1Damage();
-        p2Damage();
+        $('#winnerBox').text(`${p2Name} Wins!`);
         p1HPVal = 50;
         p2HPVal = 50;
         $('.end-screen').css('visibility', 'visible');
@@ -333,8 +328,9 @@ $( document ).ready(function() {
       // $('.end-screen').css('visibility', 'visible');
       // $('.fight-screen').css('visibility', 'hidden');
       // }
+    // Closes checkWin()
     }
-    // checkWin();
+  // Closes Fight Function
   }
 // /////////////////////////////////////////////////////////////////////////////
 // End Screen
