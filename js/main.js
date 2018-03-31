@@ -130,7 +130,7 @@ $( document ).ready(function() {
         //  $(player1).animate({top: "-=5"}, 0);
         // }
         // 'd' moves right
-        else if (keyPressed == 68 && (p1HPVal > 0 || p2HPVal > 0) && (player2BCR.right < arenaRightWall.right)) {
+        else if (keyPressed == 68 && (p1HPVal > 0 || p2HPVal > 0) && (player2BCR.right <= arenaRightWall.right)) {
             $(player1).animate({left: "+=5"}, 0);
             hitDetect();
         }
@@ -282,7 +282,7 @@ $( document ).ready(function() {
     // else if Player 2 HP <= 0, Player 1 Wins
     let checkWin = function () {
       // Player 1 Wins
-      if (p2HPVal == 0) {
+      if (p2HPVal <= 0) {
         // console.log('player 1 wins')
         playerMoves();
         
@@ -298,7 +298,7 @@ $( document ).ready(function() {
         $(player2).css('width', '150');
       }
       // Player 2 Wins
-      else if (p1HPVal == 0) {
+      else if (p1HPVal <= 0) {
         // console.log('player 2 wins')
         $('#winnerBox').text(`${p2} Wins!`);
         playerMoves();
