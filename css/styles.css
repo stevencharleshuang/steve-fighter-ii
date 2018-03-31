@@ -133,6 +133,20 @@ body {
   font-size: 25px;
   border: 1px solid black;
 }
+.player-1-controls {
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  top: 100px;
+  left: 50px;
+}
+.player-2-controls {
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  top: 100px;
+  right: 50px;
+}
 .player-1-name {
   position: absolute;
   margin: 20px;

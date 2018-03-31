@@ -1,3 +1,4 @@
+/* eslint-env browser, jquery */
 $( document ).ready(function() {
   console.log('jQuery Ready!');
 // /////////////////////////////////////////////////////////////////////////////
@@ -136,7 +137,7 @@ $( document ).ready(function() {
           // Prevent Pushing P2 Div Past Right Arena Wall
           (player2BCR.right <= arenaRightWall.right) &&
           // Prevent Div Overlap
-          (player1BCR.right <= (player2BCR.left + 10))) {
+          (player1BCR.right <= (player2BCR.left - 30))) {
             $(player1).animate({left: "+=5"}, 0);
             hitDetect();
         }
@@ -147,11 +148,11 @@ $( document ).ready(function() {
     ////////////////////////////////////////////////////////////////////////////
     // Player 2 Controls
         // 'l' moves left
-        else if (keyPressed == 76 && (p1HPVal > 0 || p2HPVal > 0) &&
+        else if (keyPressed == 76 && (p1HPVal > 0 && p2HPVal > 0) &&
           // Prevent Pushing P1 Div Past Left Arena Wall
           (player1BCR.left >= arenaLeftWall.left) &&
           // Prevent Div Overlap
-          (player2BCR.left >= (player1BCR.right - 10))) {
+          (player2BCR.left >= (player1BCR.right + 30))) {
             $(player2).animate({right: "+=5"}, 0);
             hitDetect();
         }
@@ -160,7 +161,7 @@ $( document ).ready(function() {
             // $(player2).animate({top: "-=5"}, 0);
         // }
         // ''' moves right
-        else if (keyPressed == 222 && (p1HPVal > 0 || p2HPVal > 0) &&
+        else if (keyPressed == 222 && (p1HPVal > 0 && p2HPVal > 0) &&
           // Prevent P2 From Moving Past Right Arena Wall
           (player2BCR.right < arenaRightWall.right)) {
             $(player2).animate({right: "-=5"}, 0);
@@ -184,11 +185,12 @@ $( document ).ready(function() {
         if (e.keyCode == 69) {
           // Increase div width
           $(player1).css('width', '225');
-            if (hitDetect()===true) {
+            if (hitDetect()===true && (p1HPVal > 0 && p2HPVal > 0)) {
               $(player1).css('background-color', 'yellow');
               // console.log('punch');
               p2Damage();
               checkWin();
+              console.log(`P2 HP: ${p2HPVal}`)
             }
           // Return to original Div width
           $(document).keyup(function(){
@@ -199,11 +201,12 @@ $( document ).ready(function() {
         else if (e.keyCode == 79) {
           // Increase div width
           $(player2).css('width', '225');
-          if (hitDetect()===true) {
+          if (hitDetect()===true && (p1HPVal > 0 && p2HPVal > 0)) {
               $(player2).css('background-color', 'yellow');
               // console.log('punch');
               p1Damage();
               checkWin();
+            console.log(`P1 HP: ${p1HPVal}`)
             }
           // Return to original Div width
           $(document).keyup(function(){
@@ -286,12 +289,16 @@ $( document ).ready(function() {
     // Damage System
     let p1Damage = function () {
       // console.log(p1HPVal)
+      if (p1HPVal > 0) {
       p1HPVal -= 5;
       p1HPSpan.text(p1HPVal);
+      }
     }
     let p2Damage = function () {
+      if (p2HPVal > 0) {
       p2HPVal -= 5;
       p2HPSpan.text(p2HPVal);
+      }
     }
     // p1Damage();
     // p2Damage();
@@ -301,10 +308,10 @@ $( document ).ready(function() {
     // else if Player 2 HP <= 0, Player 1 Wins
     let checkWin = function () {
       // Player 1 Wins
-      if (p2HPVal <= 0) {
-        // console.log('player 1 wins')
-        p1HPVal = 50;
-        p2HPVal = 50;
+      if (p2HPVal == 0) {
+        console.log('player 1 wins')
+        p1HPVl = 0;
+        p2HPVl = 0;
         $('#winnerBox').text(`${p1Name} Wins!`);
         $('.end-screen').css('visibility', 'visible');
         $('.fight-screen').css('visibility', 'hidden');
@@ -312,11 +319,11 @@ $( document ).ready(function() {
         $(player2).css('width', '150');
       }
       // Player 2 Wins
-      else if (p1HPVal <= 0) {
-        // console.log('player 2 wins')
+      else if (p1HPVal == 0) {
+        console.log('player 2 wins')
         $('#winnerBox').text(`${p2Name} Wins!`);
-        p1HPVal = 50;
-        p2HPVal = 50;
+        p1HPVal = 0;
+        p2HPVal = 0;
         $('.end-screen').css('visibility', 'visible');
         $('.fight-screen').css('visibility', 'hidden');
         $(player1).css('width', '150');
