@@ -113,13 +113,15 @@ $( document ).ready(function() {
     });
     let playerMoves = function () {
       let player1BCR = player1[0].getBoundingClientRect();
+      let arenaLeftWall = $('.battle-arena')[0].getBoundingClientRect()
       let player2BCR = player2[0].getBoundingClientRect();
+      let arenaRightWall = $('.battle-arena')[0].getBoundingClientRect()
       for (let keyPressed in keys) {
         if (!keys.hasOwnProperty(keyPressed)) continue;
     ////////////////////////////////////////////////////////////////////////
     // Player 1 Controls
         // 'a' moves left
-        else if (keyPressed == 65 && (player1BCR.x > 220)) {
+        else if (keyPressed == 65 && (p1HPVal > 0 || p2HPVal > 0) && (player1BCR.left > arenaLeftWall.left)) {
             $(player1).animate({left: "-=5"}, 0);
             hitDetect();
         }
@@ -128,7 +130,7 @@ $( document ).ready(function() {
         //  $(player1).animate({top: "-=5"}, 0);
         // }
         // 'd' moves right
-        else if (keyPressed == 68) {
+        else if (keyPressed == 68 && (p1HPVal > 0 || p2HPVal > 0) && (player2BCR.right < arenaRightWall.right)) {
             $(player1).animate({left: "+=5"}, 0);
             hitDetect();
         }
@@ -139,7 +141,7 @@ $( document ).ready(function() {
     ////////////////////////////////////////////////////////////////////////
     // Player 2 Controls
         // 'l' moves left
-        else if (keyPressed == 76) {
+        else if (keyPressed == 76 && (p1HPVal > 0 || p2HPVal > 0) && (player1BCR.left > arenaLeftWall.left)) {
             $(player2).animate({right: "+=5"}, 0);
             hitDetect();
         }
@@ -148,7 +150,7 @@ $( document ).ready(function() {
             // $(player2).animate({top: "-=5"}, 0);
         // }
         // ''' moves right
-        else if (keyPressed == 222 && (player2BCR.x < 880)) {
+        else if (keyPressed == 222 && (p1HPVal > 0 || p2HPVal > 0) && (player2BCR.right < arenaRightWall.right)) {
             $(player2).animate({right: "-=5"}, 0);
             hitDetect();
         }
@@ -156,10 +158,16 @@ $( document ).ready(function() {
         // else if (keyPressed == 186) {
         //     $(player2).animate({top: "+=5"}, 0);
         // }
+      
+        }
+      }
+    
     // /////////////////////////////////////////////////////////////////////
     // Player attacks
+    let playerAttacks = function () {
+        $(window).on('keydown', function (e) {
         // Punch 'e'
-        else if (keyPressed == 69) {
+        if (e.keyCode == 69) {
           // Increase div width
           $(player1).css('width', '225');
             if (hitDetect()===true) {
@@ -174,7 +182,7 @@ $( document ).ready(function() {
           });
         }
         // Punch 'o'
-        else if (keyPressed == 79) {
+        else if (e.keyCode == 79) {
           // Increase div width
           $(player2).css('width', '225');
           if (hitDetect()===true) {
@@ -188,9 +196,10 @@ $( document ).ready(function() {
             $(player2).css('width', '150');
           });
         }
-      }
-    }
+      });
+    } 
     playerMoves();
+    playerAttacks();
     setInterval(playerMoves, 10);
   // /////////////////////////////////////////////////////////////////////////
   // Hit collision from scratch
@@ -258,35 +267,45 @@ $( document ).ready(function() {
     // Damage System
     let p1Damage = function () {
       // console.log(p1HPVal)
-      p1HPVal -= 1;
+      p1HPVal -= 5;
       p1HPSpan.html(p1HPVal);
     }
     let p2Damage = function () {
-      p2HPVal -= 1;
+      p2HPVal -= 5;
       p2HPSpan.html(p2HPVal);
     }
+    p1Damage();
+    p2Damage();
   //////////////////////////////////////////////////////////////////////////////
   // * Win-Case:
     // if Player 1 HP <= 0, Player 2 Wins
     // else if Player 2 HP <= 0, Player 1 Wins
     let checkWin = function () {
       // Player 1 Wins
-      if (p2HPVal === 0) {
+      if (p2HPVal == 0) {
         // console.log('player 1 wins')
-        $(document).off('')
-        $('#winnerBox').text(`${p1} Wins!`);
+        playerMoves();
+        
+        playerAttacks();
+        p1Damage();
+        p2Damage();
         p1HPVal = 50;
         p2HPVal = 50;
+        $('#winnerBox').text(`${p1} Wins!`);
         $('.end-screen').css('visibility', 'visible');
         $('.fight-screen').css('visibility', 'hidden');
         $(player1).css('width', '150');
         $(player2).css('width', '150');
       }
       // Player 2 Wins
-      else if (p1HPVal === 0) {
+      else if (p1HPVal == 0) {
         // console.log('player 2 wins')
-        $(document).off()
         $('#winnerBox').text(`${p2} Wins!`);
+        playerMoves();
+        
+        playerAttacks();
+        p1Damage();
+        p2Damage();
         p1HPVal = 50;
         p2HPVal = 50;
         $('.end-screen').css('visibility', 'visible');

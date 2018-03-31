@@ -11,58 +11,116 @@ let blueBox = $('.blue-box');
 let greenBox = $('.green-box');
 // Motion Controls
 // https://stackoverflow.com/questions/7298507/move-element-with-keypress-multiple
-let keys  = {}
+// let keys  = {}
 
-$(document).keydown(function(e) {
-    keys[e.keyCode] = true;
-});
+// $(document).keydown(function(e) {
+//     keys[e.keyCode] = true;
+// });
 
-$(document).keyup(function(e) {
-    delete keys[e.keyCode];
-});
+// $(document).keyup(function(e) {
+//     delete keys[e.keyCode];
+// });
+// function moveSq() {
+//     for (let direction in keys) {
+//         if (!keys.hasOwnProperty(direction)) continue;
+//         // 'a' moves left
+//         else if (direction == 65) {
+//             $(blueBox).animate({left: "-=5"}, 0);
+//             hitDetect();
+//         }
+//         // 'w' moves up
+//         // else if (direction == 87) {
+//         //  $(blueBox).animate({top: "-=5"}, 0);
+//         // }
+//         // 'd' moves right
+//         else if (direction == 68) {
+//             $(blueBox).animate({left: "+=5"}, 0);
+//             hitDetect();
+//         }
+//         // 's' moves down
+//         // else if (direction == 83) {
+//         //  $(blueBox).animate({top: "+=5"}, 0);
+//         // }
+//         // 'l' moves left
+//         else if (direction == 76) {
+//             $(greenBox).animate({left: "-=5"}, 0);
+//             hitDetect();
+//         }
+//         // 'p' moves up
+//         // else if (direction == 80) {
+//             // $(greenBox).animate({top: "-=5"}, 0);
+//         // }
+//         // ''' moves right
+//         else if (direction == 222) {
+//             $(greenBox).animate({left: "+=5"}, 0);
+//             hitDetect();
+//         }
+//         // ';' moves down
+//         // else if (direction == 186) {
+//         //     $(greenBox).animate({top: "+=5"}, 0);
+//         // }
+//     }
+// }
+// moveSq();
+// setInterval(moveSq, 10);
+  // /////////////////////////////////////////////////////////////////
+// Alternate Motion Controls
+
+// https://stackoverflow.com/questions/7298507/move-element-with-keypress-multiple
+// let keys  = {}
+
+// $(document).keydown(function(e) {
+//     keys[e.keyCode] = true;
+// });
+
+// $(document).keyup(function(e) {
+//     delete keys[e.keyCode];
+// });
 function moveSq() {
-    for (let direction in keys) {
-        if (!keys.hasOwnProperty(direction)) continue;
-        // 'a' moves left
-        else if (direction == 65) {
+$(window).on('keydown', function (e) {
+      // if (e.keyCode == 65) {
+//         // 'a' moves left
+        if (e.keyCode == 65) {
             $(blueBox).animate({left: "-=5"}, 0);
             hitDetect();
         }
         // 'w' moves up
-        // else if (direction == 87) {
+        // else if (e.keyCode == 87) {
         //  $(blueBox).animate({top: "-=5"}, 0);
         // }
         // 'd' moves right
-        else if (direction == 68) {
+        else if (e.keyCode == 68) {
             $(blueBox).animate({left: "+=5"}, 0);
             hitDetect();
         }
         // 's' moves down
-        // else if (direction == 83) {
+        // else if (e.keyCode == 83) {
         //  $(blueBox).animate({top: "+=5"}, 0);
         // }
         // 'l' moves left
-        else if (direction == 76) {
+        else if (e.keyCode == 76) {
             $(greenBox).animate({left: "-=5"}, 0);
             hitDetect();
         }
         // 'p' moves up
-        // else if (direction == 80) {
+        // else if (e.keyCode == 80) {
             // $(greenBox).animate({top: "-=5"}, 0);
         // }
         // ''' moves right
-        else if (direction == 222) {
+        else if (e.keyCode == 222) {
             $(greenBox).animate({left: "+=5"}, 0);
             hitDetect();
         }
         // ';' moves down
-        // else if (direction == 186) {
+        // else if (e.keyCode == 186) {
         //     $(greenBox).animate({top: "+=5"}, 0);
         // }
-    }
+//     }
+// }
+});
 }
 moveSq();
-setInterval(moveSq, 10);
+setInterval(moveSq, 800);
 /////////////////////////////
 // Hit collision from scratch
 let hitDetect = function () {
