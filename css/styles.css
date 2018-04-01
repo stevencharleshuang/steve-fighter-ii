@@ -5,8 +5,12 @@ body {
   background-attachment: fixed;
   background-position: center top;*/
   text-align: center;
+  text-shadow: 2px 2px black;
   font-family: 'VT323', monospace;
   letter-spacing: 3px;
+}
+.wrapper {
+  margin: 10%;
 }
 .landing-screen{
   position: absolute;
@@ -16,8 +20,6 @@ body {
   height: 600px;
   width: 800px;
   visibility: visible;
-}
-.player-select {
 }
 .player1-form {
   margin: 20px;
@@ -73,6 +75,10 @@ body {
   background-color: #aaa;
   cursor: pointer;
 }
+/*#start-btn:hover ~ .player2-form {
+  background-image: url('../images/tenor.gif');
+  background-size: cover;
+}*/
 #landing-ftr {
   font-size: 25px;
   margin: 20px;
@@ -91,6 +97,8 @@ body {
   visibility: hidden;
 }
 .battle-arena {
+  background-image: url('../images/arena.jpg');
+  background-position: -150px 0;
   /*background-color: white;*/
   height: 600px;
   width: 800px;
@@ -119,8 +127,11 @@ body {
 }
 .player-1-hp {
   position: absolute;
-  top: 0;
-  left: 50px;
+  text-shadow: 2px 2px #555;
+  top: 3%;
+  left: 10px;
+  width: 350px;
+  height: 4%;
   background-color: yellow;
   padding: 5px;
   font-size: 25px;
@@ -128,37 +139,63 @@ body {
 }
 .player-2-hp {
   position: absolute;
-  top: 0;
-  right: 50px;
+  text-shadow: 2px 2px #555;
+  top: 3%;
+  right: 10px;
+  width: 350px;
+  height: 4%;
   background-color: yellow;
   padding: 5px;
   font-size: 25px;
   border: 1px solid black;
 }
+.ko-box {
+  background: red;
+  position: relative;
+  top: 15px;
+  width: 62px;
+  height: 42px;
+  font-weight: 500;
+  text-shadow: 5px 4px #608;
+  margin: 0 auto;
+  font-family: 'Bevan', cursive;
+  font-size: 30px;
+  letter-spacing: -3px;
+  color: white;
+/*  border: 2px white solid;*/
+  z-index: 2;
+  vertical-align: baseline;
+}
 .timer-box {
   position: relative;
-  top: 10px;
+  top: 60px;
   color: orange;
   text-shadow: 2px 2px #808;
   margin: 0 auto;
   font-size: 50px;
-  width: 100px;
+  width: 60px;
   height: auto;
   border: 1px black solid;
 }
 .player-1-controls {
   font-size: 20px;
+  background-color: rgba(80,80,80,.7);
+  padding: 10px;
   color: white;
   position: absolute;
   top: 100px;
-  left: 50px;
+  left: 14%;
+  border-radius: 15px;
 }
 .player-2-controls {
   font-size: 20px;
+  background-color: rgba(80,80,80,.7);
+  padding: 10px;
   color: white;
   position: absolute;
   top: 100px;
-  right: 50px;
+  right: 14%;
+  border-radius: 15px;
 }
 .player-1-name {
   position: absolute;
@@ -189,6 +226,7 @@ body {
   visibility: hidden;
 }
 .announcement-box {
+  border-radius: 10px;
   position: absolute;
   padding: 50px;
   height: 500px;
@@ -207,9 +245,23 @@ body {
   margin: 0 auto;
 }
 /* Testing Only */
-#cheat-btn {position: relative; top: 100px;}
-#hit-player2 {position: absolute;top: 200px; left:100px;}
-#hit-player1 {position: absolute;top: 200px; right:100px;}
+#cheat-btn {
+  position: relative; 
+  top: 100px;
+  /*visibility: hidden;*/
+}
+#hit-player2 {
+  position: absolute;
+  top: 200px; 
+  left:100px;
+  /*visibility: hidden*/
+}
+#hit-player1 {
+  position: absolute;
+  top: 200px; 
+  right:100px;
+  /*visibility: hidden;*/
+}
 button {
   font-size: 20px;
   font-family: 'VT323', monospace;

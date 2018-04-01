@@ -4,72 +4,80 @@
   <meta charset="UTF-8">
   <title>Steve Fighter II</title>
   <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bevan" rel="stylesheet">
   <script src="js/jquery-3.3.1.min.js" type="text/javascript"
   charset="utf-8" async defer></script>
   <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crafty/0.9.0/crafty-min.js"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="landing-screen">
-    <center>
-    <img src="images/stevefighterlogo.png" id="logo">
-    </center>
-    <div class="player-select">
-      <div class="player1-form">
-        <form id="player1-input">
-          Player 1 Name:
-          <input type="text" id="player1-name" placeholder="Name"><br><br>
-          <button id="p1-nameSubmit">Kick Ass!</button>
-        </form>
-        <button id="player-1-reset">New Challenger</button>
+  <div class="wrapper">
+    <div class="landing-screen">
+      <div class="world-on-fire">
+        <center>
+        <img src="images/stevefighterlogo.png" id="logo">
+        </center>
+        <div class="player-select">
+          <div class="player1-form">
+            <form id="player1-input">
+              Player 1 Name:
+              <input type="text" id="player1-name" placeholder="Name"><br><br>
+              <button id="p1-nameSubmit">Kick Ass!</button>
+            </form  >
+            <button id="player-1-reset">New Challenger</button>
+            <p>a = left<br>d = right<br>e = punch</p>
+          </div>
+          <button id="start-btn">Let's Kick Some Ass!</button>
+          <div class="player2-form">
+            <form id="player2-input">
+              Player 2 Name:
+              <input type="text" id="player2-name" placeholder="Name"><br><br>
+              <button id="p2-nameSubmit">Kick Ass!</button>
+            </form>
+            <button id="player-2-reset">New Challenger</button>
+              <p>l = left<br>' = right<br>o = punch</p>
+          </div>
+        </div>
+        <div id="landing-ftr">Steve Fighter 1 was a flop =(</div>
       </div>
-      <button id="start-btn">Let's Kick Some Ass!</button>
-      <div class="player2-form">
-        <form id="player2-input">
-          Player 2 Name:
-          <input type="text" id="player2-name" placeholder="Name"><br><br>
-          <button id="p2-nameSubmit">Kick Ass!</button>
-        </form>
-        <button id="player-2-reset">New Challenger</button>
+    </div>
+    <div class="fight-screen">
+      <div class="battle-arena">
+        <div class="player-1-hp">HP Remaining: <span id="p1-hp-span"></span></div>
+        <div class="ko-box"><span class="ko">KO</span></div>
+        <div class="timer-box">99</div>
+        <div class="player-2-hp">HP Remaining: <span id="p2-hp-span"></span></div>
+        <div class="player-1-controls">a = left<br>d = right<br>e = punch</div>
+        <div class="player-2-controls">l = left<br>' = right<br>o = punch</div>
+        <!-- For Clickable Model, Testing, and Debugging Only! -->
+        <button id="hit-player2">Hit Player 2</button>
+        <button id="hit-player1">Hit Player 1</button>
+        <button id="cheat-btn">InstaWin!</button>
+        <div class=player-1></div>
+        <div class=player-2></div>
+        <div class="player-1-name">Player 1</div>
+        <div class="player-2-name">Player 2</div>
       </div>
     </div>
-    <div id="landing-ftr">Steve Fighter 1 was a flop =(</div>
-  </div>
-  <div class="fight-screen">
-    <div class="battle-arena">
-      <div class="player-1-hp">HP Remaining: <span id="p1-hp-span"></span></div>
-      <div class="timer-box">99</div>
-      <div class="player-2-hp">HP Remaining: <span id="p2-hp-span"></span></div>
-      <div class="player-1-controls">a and d = left and right<br>e = punch</div>
-      <div class="player-2-controls">l and ' = left and right<br>o = punch</div>
-      <!-- For Clickable Model, Testing, and Debugging Only! -->
-      <button id="hit-player2">Hit Player 2</button>
-      <button id="hit-player1">Hit Player 1</button>
-      <button id="cheat-btn">InstaWin!</button>
-      <div class=player-1></div>
-      <div class=player-2></div>
-      <div class="player-1-name">Player 1</div>
-      <div class="player-2-name">Player 2</div>
+    <div class="end-screen">
+      <div class="announcement-box">
+        <div class="container">
+          <p>
+            <div id="winnerBox"></div>
+          </p>
+          <p>
+            <!-- For Clickable Model, Testing, and Debugging Only! -->
+            <button id="replay-btn">Fight Again?</button><br>
+            <!-- For Clickable Model, Testing, and Debugging Only! -->
+            <button id="landing-btn">Back To Player Screen</button>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="end-screen">
-    <div class="announcement-box">
-      <div class="container">
-        <p>
-        <div id="winnerBox"></div>
-        </p>
-        <p>
-          <!-- For Clickable Model, Testing, and Debugging Only! -->
-          <button id="replay-btn">Fight Again?</button><br>
-          <!-- For Clickable Model, Testing, and Debugging Only! -->
-          <button id="landing-btn">Back To Player Screen</button>
-        </p>
-    </div>
-    </div>
   <script src="js/main.js"></script>
 </body>
 </html>

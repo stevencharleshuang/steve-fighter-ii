@@ -23,6 +23,12 @@ $( document ).ready(function() {
   // Target #player1-input and #player2-input
   let p1Input = $('#player1-input');
   let p2Input = $('#player2-input');
+  $('#start-btn').hover(function () {
+    console.log('hover');
+    $('.world-on-fire').css({'background-image': 'url("images/world-on-fire.gif")',
+    'background-size': 'cover'});}, function(){
+    $('.world-on-fire').css('background-image', '')
+  });
   // p1 Form Event Listener
   $('#p1-nameSubmit').click(function(event) {
     // Get Name text
@@ -79,8 +85,8 @@ $( document ).ready(function() {
   // ///////////////////////////////////////////////////////////////////////////
   // HP System
   // Initialize HP values
-    let p1HPVal = 75;
-    let p2HPVal = 75;
+    let p1HPVal = 101;
+    let p2HPVal = 101;
     // Target HP Spans
     let p1HPSpan = $('#p1-hp-span');
     let p2HPSpan = $('#p2-hp-span');
@@ -169,45 +175,14 @@ $( document ).ready(function() {
             $(player2).animate({right: "-=5"}, 0);
             hitDetect();
         }
-
         // ';' moves down
         // else if (keyPressed == 186) {
         //     $(player2).animate({top: "+=5"}, 0);
         // }
-      // Closes for-continue
-      }
-    // Closes playerMoves()
-    }
-
-    // /////////////////////////////////////////////////////////////////////////
-    // Player attacks
-    const playerAttacks = function () {
-      let player1BCR = player1[0].getBoundingClientRect();
-      let player2BCR = player2[0].getBoundingClientRect();
-        $(window).on('keydown', function (e) {
         ////////////////////////////////////////////////////////////////////////
-        // Player 1
-        // Punch - 'e'
-        if (e.keyCode == 69) {
-          // Increase div width
-          $(player1).css('width', '225');
-            if (hitDetect()===true && (p1HPVal > 0 && p2HPVal > 0)) {
-              $(player1).css('background-color', 'yellow');
-              // console.log('punch');
-              if (p2HPVal > 0) {
-                p2HPVal -= 5;
-                p2HPSpan.text(p2HPVal);
-              }
-              checkWin();
-              console.log(`P2 HP: ${p2HPVal}`)
-            }
-          // Return to original Div width
-          $(document).keyup(function(){
-            $(player1).css('width', '150');
-          });
-        }
-        // Block - 'q'
-        else if (e.keyCode == 81) {
+        // Blocking System
+        // Player 1 Block - 'q'
+        else if (keyPressed == 81) {
           // Increase div width
           if (p1HPVal > 0 && p2HPVal > 0) {
             $(player1).css({'width': '155','background-color': 'purple'});
@@ -219,6 +194,68 @@ $( document ).ready(function() {
             $(player1).css({'width': '150','background-color': 'blue'});
           });
         }
+        // Player 2 Block - '['
+        else if (keyPressed == 219) {
+          // Increase div width
+          if (p1HPVal > 0 && p2HPVal > 0) {
+            $(player2).css({'width': '155','background-color': 'purple'});
+            // console.log('block');
+            // console.log(`P1 HP: ${p1HPVal}`)
+          }
+          // Return to original Div width
+          $(document).keyup(function(){
+            $(player2).css({'width': '150','background-color': 'green'});
+          });
+        }
+        ////////////////////////////////////////////////////////////////////////
+
+      // Closes for-continue
+      }
+    // Closes playerMoves()
+    }
+
+    // /////////////////////////////////////////////////////////////////////////
+    // Player attacks
+    const playerAttacks = function () {
+      let player1BCR = player1[0].getBoundingClientRect();
+      let player2BCR = player2[0].getBoundingClientRect();
+        $(document).on('keydown', function (e) {
+        ////////////////////////////////////////////////////////////////////////
+        // Player 1
+        // Punch - 'e'
+
+        if (e.keyCode == 69) {
+          // Increase div width
+          $(player1).css('width', '225');
+            if (hitDetect()===true && (p1HPVal > 0 && p2HPVal > 0)) {
+              e.preventDefault();
+              $(player1).css('background-color', 'yellow');
+              // console.log('punch');
+              if (p2HPVal > 0) {
+                p2HPVal -= 1;
+                p2HPSpan.text(p2HPVal);
+              }
+              checkWin();
+              console.log(`P2 HP: ${p2HPVal}`)
+            }
+          // Return to original Div width
+          $(document).keyup(function(){
+            $(player1).css('width', '150');
+          });
+        }
+        // // Block - 'q'
+        // else if (e.keyCode == 81) {
+        //   // Increase div width
+        //   if (p1HPVal > 0 && p2HPVal > 0) {
+        //     $(player1).css({'width': '155','background-color': 'purple'});
+        //     // console.log('block');
+        //     // console.log(`P1 HP: ${p1HPVal}`)
+        //   }
+        //   // Return to original Div width
+        //   $(document).keyup(function(){
+        //     $(player1).css({'width': '150','background-color': 'blue'});
+        //   });
+        // }
         ////////////////////////////////////////////////////////////////////////
         // Player 2
         // Punch 'o'
@@ -229,7 +266,7 @@ $( document ).ready(function() {
             $(player2).css('background-color', 'yellow');
             // console.log('punch');
             if (p1HPVal > 0 && player1BCR.width !== 155) {
-              p1HPVal -= 5;
+              p1HPVal -= 1;
               p1HPSpan.text(p1HPVal);
             }
             checkWin();
@@ -244,7 +281,7 @@ $( document ).ready(function() {
       });
     // Closes playerAttacks()
     }
-    playerAttacks();
+    setInterval(playerAttacks, 500);
     setInterval(playerMoves, 10);
   // ///////////////////////////////////////////////////////////////////////////
   // Hit collision from scratch
@@ -305,7 +342,7 @@ $( document ).ready(function() {
       $('.fight-screen').css('visibility', 'hidden');
       if (p1HPVal > 0 && p2HPVal > 0) {
         // HP Reduction
-        p2HPVal -= 75;
+        p2HPVal -= 101;
         p2HPSpan.text(p2HPVal);
         checkWin();
       }
@@ -343,7 +380,7 @@ $( document ).ready(function() {
     // else if Player 2 HP <= 0, Player 1 Wins
     let checkWin = function () {
       // Player 1 Wins
-      if (p2HPVal == 0) {
+      if (p2HPVal <= 0) {
         console.log('player 1 wins')
         // Stops Post Match hitting
         p1HPVl = 0;
@@ -361,7 +398,7 @@ $( document ).ready(function() {
         // $(player2).css('width', '150');
       }
       // Player 2 Wins
-      else if (p1HPVal == 0) {
+      else if (p1HPVal <= 0) {
         console.log('player 2 wins')
         $('#winnerBox').text(`${p2Name} Wins!`);
         p1HPVal = 0;
