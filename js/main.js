@@ -25,9 +25,9 @@ $( document ).ready(function() {
   let p2Input = $('#player2-input');
   $('#start-btn').hover(function () {
     console.log('hover');
-    $('.world-on-fire').css({'background-image': 'url("images/world-on-fire.gif")',
+    $('body').css({'background-image': 'url("images/world-on-fire.gif")',
     'background-size': 'cover'});}, function(){
-    $('.world-on-fire').css('background-image', '')
+    $('body').css('background-image', '')
   });
   // p1 Form Event Listener
   $('#p1-nameSubmit').click(function(event) {
@@ -186,8 +186,11 @@ $( document ).ready(function() {
           // Increase div width
           if (p1HPVal > 0 && p2HPVal > 0) {
             $(player1).css({'width': '155','background-color': 'purple'});
-            // console.log('block');
-            // console.log(`P1 HP: ${p1HPVal}`)
+            if (player2BCR.right < arenaRightWall.right){
+              $(player2).animate({right: "-=1"}, 0);
+              // console.log('block');
+              // console.log(`P1 HP: ${p1HPVal}`)
+            }
           }
           // Return to original Div width
           $(document).keyup(function(){
@@ -199,8 +202,11 @@ $( document ).ready(function() {
           // Increase div width
           if (p1HPVal > 0 && p2HPVal > 0) {
             $(player2).css({'width': '155','background-color': 'purple'});
-            // console.log('block');
-            // console.log(`P1 HP: ${p1HPVal}`)
+            if (player1BCR.left < arenaLeftWall.left){
+              $(player1).animate({left: "-=1"}, 0);
+              // console.log('block');
+              // console.log(`P1 HP: ${p1HPVal}`)
+            }
           }
           // Return to original Div width
           $(document).keyup(function(){
@@ -208,32 +214,31 @@ $( document ).ready(function() {
           });
         }
         ////////////////////////////////////////////////////////////////////////
-
       // Closes for-continue
       }
     // Closes playerMoves()
     }
-
     // /////////////////////////////////////////////////////////////////////////
     // Player attacks
     const playerAttacks = function () {
+      let attacks = true;
       let player1BCR = player1[0].getBoundingClientRect();
       let player2BCR = player2[0].getBoundingClientRect();
         $(document).on('keydown', function (e) {
         ////////////////////////////////////////////////////////////////////////
         // Player 1
         // Punch - 'e'
-
         if (e.keyCode == 69) {
           // Increase div width
-          $(player1).css('width', '225');
+          $(player1).css('width', '175');
             if (hitDetect()===true && (p1HPVal > 0 && p2HPVal > 0)) {
-              e.preventDefault();
               $(player1).css('background-color', 'yellow');
               // console.log('punch');
               if (p2HPVal > 0) {
                 p2HPVal -= 1;
                 p2HPSpan.text(p2HPVal);
+                // Keydown temporary fix
+                $(player1).animate({left: "-=1"}, 0);
               }
               checkWin();
               console.log(`P2 HP: ${p2HPVal}`)
@@ -243,31 +248,20 @@ $( document ).ready(function() {
             $(player1).css('width', '150');
           });
         }
-        // // Block - 'q'
-        // else if (e.keyCode == 81) {
-        //   // Increase div width
-        //   if (p1HPVal > 0 && p2HPVal > 0) {
-        //     $(player1).css({'width': '155','background-color': 'purple'});
-        //     // console.log('block');
-        //     // console.log(`P1 HP: ${p1HPVal}`)
-        //   }
-        //   // Return to original Div width
-        //   $(document).keyup(function(){
-        //     $(player1).css({'width': '150','background-color': 'blue'});
-        //   });
-        // }
         ////////////////////////////////////////////////////////////////////////
         // Player 2
         // Punch 'o'
         else if (e.keyCode == 79) {
           // Increase div width
-          $(player2).css('width', '225');
+          $(player2).css('width', '175');
           if (hitDetect()===true && (p1HPVal > 0 && p2HPVal > 0)) {
             $(player2).css('background-color', 'yellow');
             // console.log('punch');
             if (p1HPVal > 0 && player1BCR.width !== 155) {
               p1HPVal -= 1;
               p1HPSpan.text(p1HPVal);
+              // Keydown temporary fix
+              $(player2).animate({right: "-=1"}, 0);
             }
             checkWin();
             console.log(`P1 HP: ${p1HPVal}`)
@@ -286,7 +280,7 @@ $( document ).ready(function() {
   // ///////////////////////////////////////////////////////////////////////////
   // Hit collision from scratch
   // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
-    let hitDetect = function () {
+    const hitDetect = function () {
       let player1BCR = player1[0].getBoundingClientRect();
       let player2BCR = player2[0].getBoundingClientRect();
       // console.log(player2BCR);
