@@ -107,6 +107,8 @@ $( document ).ready(function() {
       'width': '150px'});
     player2.css({'right': '100px', 'background-color': 'green',
       'width': '150px'});
+    $('.player-1-hp').css('width', '350');
+    $('.player-2-hp').css('width', '350');
   // ///////////////////////////////////////////////////////////////////////////
   // HP System
   // Initialize HP values
@@ -123,8 +125,9 @@ $( document ).ready(function() {
     function p1HPBar () {
      return 350 - (350-((p1HPVal * 350)/101));
     }
-
-    console.log(p1HPBar)
+    function p2HPBar () {
+     return 350 - (350-((p2HPVal * 350)/101));
+    }
   // ///////////////////////////////////////////////////////////////////////////
   // Player Name Display
   // Name Displays
@@ -272,12 +275,12 @@ $( document ).ready(function() {
           }, 200);
           if (hitDetect() === true && (p1HPVal > 0 && p2HPVal > 0)) {
             if (player === player1) {
-              // Damage Function Args: (playerHPVal, damageVal, playerHPSpan)
-              p2HPVal = damage(p2HPVal, 5, p2HPSpan);
+              // Damage Function Args: (playerDamaged,playerHPVal, damageVal, playerHPSpan)
+              p2HPVal = damage(2, p2HPVal, 5, p2HPSpan);
               checkWin();
             }
             else if (player === player2) {
-              p1HPVal = damage(p1HPVal, 5, p1HPSpan)
+              p1HPVal = damage(1, p1HPVal, 5, p1HPSpan)
               checkWin();
             }
            }
@@ -331,11 +334,16 @@ $( document ).ready(function() {
     }
     ////////////////////////////////////////////////////////////////////////////
     // Damage System
-    function damage (playerHPVal, damageVal, playerHPSpan) {
+    function damage (player, playerHPVal, damageVal, playerHPSpan) {
       if (playerHPVal > 0) {
       playerHPVal -= damageVal;
       playerHPSpan.text(playerHPVal);
-      $('.player-1-hp').css('width', p1HPBar);
+        if (player===1) {
+          $('.player-1-hp').css('width', p1HPBar);
+        }
+        else if (player===2) {
+          $('.player-2-hp').css('width', p2HPBar);
+        }
       return playerHPVal
       }
     }
@@ -391,8 +399,8 @@ $( document ).ready(function() {
       if (p2HPVal <= 0) {
         console.log('player 1 wins')
         // Stops Post Match hitting
-        p1HPVl = 0;
-        p2HPVl = 0;
+        p1HPVal = 0;
+        p2HPVal = 0;
         // Stop Timer
         clearInterval(tickDown);
         // Re-inits Timer
