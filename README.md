@@ -1,6 +1,6 @@
 # Steve Fighter
-[Steve Fighter - Bit Balloon](http://eager-blackwell-7636a3.bitballoon.com)
-[Steve Fighter - Git Hub Pages](https://git.generalassemb.ly/pages/stevencharleshuang/project-1-game/)
+* [Steve Fighter - Bit Balloon](http://eager-blackwell-7636a3.bitballoon.com)
+* [Steve Fighter - Git Hub Pages](https://git.generalassemb.ly/pages/stevencharleshuang/project-1-game/)
 # Project Overview
 Day | Deliverable
 ------------ | -------------
