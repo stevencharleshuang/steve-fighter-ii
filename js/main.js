@@ -1,5 +1,5 @@
 /* eslint-env browser, jquery */
-$( document ).ready(function() {
+$(document).ready(function() {
   console.log('jQuery Ready!');
 // /////////////////////////////////////////////////////////////////////////////
 // Landing Screen
@@ -266,7 +266,7 @@ $( document ).ready(function() {
         function punch (player) {
           // Increase div width
           // Increase Player Div Width
-          $(player).css('width', '200');
+          $(player).css('width', '175');
           // Change Player Color
           $(player).css('background-color', 'yellow');
           // Auto-Return Player Div Width
@@ -285,6 +285,28 @@ $( document ).ready(function() {
             }
            }
         }
+        function kick (player) {
+          // Increase div width
+          // Increase Player Div Width
+          $(player).css('width', '200');
+          // Change Player Color
+          $(player).css('background-color', 'yellow');
+          // Auto-Return Player Div Width
+          setTimeout(function(){
+            $(player).css('width', '150');
+          }, 200);
+          if (hitDetect() === true && (p1HPVal > 0 && p2HPVal > 0)) {
+            if (player === player1) {
+              // Damage Function Args: (playerDamaged,playerHPVal, damageVal, playerHPSpan)
+              p2HPVal = damage(2, p2HPVal, 10, p2HPSpan);
+              checkWin();
+            }
+            else if (player === player2) {
+              p1HPVal = damage(1, p1HPVal, 10, p1HPSpan)
+              checkWin();
+            }
+           }
+        }
         ////////////////////////////////////////////////////////////////////////
         // Player Key Bindings-Attack Calls
         // Player 1
@@ -292,11 +314,19 @@ $( document ).ready(function() {
         if (e.keyCode == 69) {
           punch(player1);
         }
+        // Kick -'f'
+        else if (e.keyCode == 70) {
+          kick(player1);
+        }
         ////////////////////////////////////////////////////////////////////////
         // Player 2
         // Punch 'o'
         else if (e.keyCode == 79) {
           punch(player2)
+        }
+        // Kick -'kz'
+        else if (e.keyCode == 75) {
+          kick(player2);
         }
       // Closes Evt Listener
       });
