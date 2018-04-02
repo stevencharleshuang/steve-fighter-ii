@@ -74,7 +74,7 @@ $( document ).ready(function() {
             // P2 Keys (Right=(')(222)
   // **** Fight Mechanics */
   // Hit Detection Solution
-  const fight = function () {
+  function fight () {
     // Declarations and avatar initializations
     let player1 = $('.player-1');
     let player2 = $('.player-2');
@@ -120,7 +120,7 @@ $( document ).ready(function() {
     $(document).on('keyup', function(e) {
         delete keys[e.keyCode];
     });
-    let playerMoves = function () {
+    function playerMoves () {
       let player1BCR = player1[0].getBoundingClientRect();
       let player2BCR = player2[0].getBoundingClientRect();
       let arenaLeftWall = $('.battle-arena')[0].getBoundingClientRect()
@@ -220,67 +220,58 @@ $( document ).ready(function() {
     }
     // /////////////////////////////////////////////////////////////////////////
     // Player attacks
-    const playerAttacks = function () {
+    function playerAttacks () {
       let attacks = true;
       let player1BCR = player1[0].getBoundingClientRect();
       let player2BCR = player2[0].getBoundingClientRect();
         $(document).on('keydown', function (e) {
         ////////////////////////////////////////////////////////////////////////
+        // Player Attacks
+        // Player Attacks - Punch
+        function punch (player) {
+          // Increase div width
+          // Increase Player Div Width
+          $(player).css('width', '200');
+          // Change Player Color
+          $(player).css('background-color', 'yellow');
+          // Auto-Return Player Div Width
+          setTimeout(function(){
+            $(player).css('width', '150');
+          }, 200);
+          if (hitDetect() === true && (p1HPVal > 0 && p2HPVal > 0)) {
+            if (player === player1) {
+              // Damage Function Args: (playerHPVal, damageVal, playerHPSpan)
+              p2HPVal = damage(p2HPVal, 5, p2HPSpan);
+              checkWin();
+            }
+            else if (player === player2) {
+              p1HPVal = damage(p1HPVal, 5, p1HPSpan)
+              checkWin();
+            }
+           }
+        }
+        ////////////////////////////////////////////////////////////////////////
         // Player 1
         // Punch - 'e'
         if (e.keyCode == 69) {
-          // Increase div width
-          $(player1).css('width', '175');
-            if (hitDetect()===true && (p1HPVal > 0 && p2HPVal > 0)) {
-              $(player1).css('background-color', 'yellow');
-              // console.log('punch');
-              if (p2HPVal > 0) {
-                p2HPVal -= 1;
-                p2HPSpan.text(p2HPVal);
-                // Keydown temporary fix
-                $(player1).animate({left: "-=1"}, 0);
-              }
-              checkWin();
-              console.log(`P2 HP: ${p2HPVal}`)
-            }
-          // Return to original Div width
-          $(document).keyup(function(){
-            $(player1).css('width', '150');
-          });
+          punch(player1);
         }
         ////////////////////////////////////////////////////////////////////////
         // Player 2
         // Punch 'o'
         else if (e.keyCode == 79) {
-          // Increase div width
-          $(player2).css('width', '175');
-          if (hitDetect()===true && (p1HPVal > 0 && p2HPVal > 0)) {
-            $(player2).css('background-color', 'yellow');
-            // console.log('punch');
-            if (p1HPVal > 0 && player1BCR.width !== 155) {
-              p1HPVal -= 1;
-              p1HPSpan.text(p1HPVal);
-              // Keydown temporary fix
-              $(player2).animate({right: "-=1"}, 0);
-            }
-            checkWin();
-            console.log(`P1 HP: ${p1HPVal}`)
-          }
-          // Return to original Div width
-          $(document).keyup(function(){
-            $(player2).css('width', '150');
-          });
+          punch(player2)
         }
       // Closes Evt Listener
       });
     // Closes playerAttacks()
     }
-    setInterval(playerAttacks, 500);
+    playerAttacks();
     setInterval(playerMoves, 10);
   // ///////////////////////////////////////////////////////////////////////////
   // Hit collision from scratch
   // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
-    const hitDetect = function () {
+    function hitDetect () {
       let player1BCR = player1[0].getBoundingClientRect();
       let player2BCR = player2[0].getBoundingClientRect();
       // console.log(player2BCR);
@@ -339,23 +330,19 @@ $( document ).ready(function() {
         p2HPVal -= 101;
         p2HPSpan.text(p2HPVal);
         checkWin();
+        return playerHPVal
       }
     });
     ////////////////////////////////////////////////////////////////////////////
     // Damage System
-    let p1Damage = function () {
-      // console.log(p1HPVal)
-      if (p1HPVal > 0) {
-      p1HPVal -= 5;
-      p1HPSpan.text(p1HPVal);
+    function damage (playerHPVal, damageVal, playerHPSpan) {
+      if (playerHPVal > 0) {
+      playerHPVal -= damageVal;
+      playerHPSpan.text(playerHPVal);
+      return playerHPVal
       }
     }
-    let p2Damage = function () {
-      if (p2HPVal > 0) {
-      p2HPVal -= 5;
-      p2HPSpan.text(p2HPVal);
-      }
-    }
+
   //////////////////////////////////////////////////////////////////////////////
   // *** PostMVP Timer
     let timerBox = $('.timer-box');
@@ -372,7 +359,7 @@ $( document ).ready(function() {
   // * Win-Case:
     // if Player 1 HP <= 0, Player 2 Wins
     // else if Player 2 HP <= 0, Player 1 Wins
-    let checkWin = function () {
+    function checkWin () {
       // Player 1 Wins
       if (p2HPVal <= 0) {
         console.log('player 1 wins')
@@ -407,14 +394,14 @@ $( document ).ready(function() {
       }
       // Draw Clause
       else if (timer === 0 && (p1HPVal > 0 && p2HPVal > 0)) {
-      $('#winnerBox').text(`It\'s A Draw. You Both Lose =(`);
-      p1HPVal = 0;
-      p2HPVal = 0;
-      clearInterval(tickDown);
-      timer = 99;
-      timerBox.text(timer);
-      $('.end-screen').css('visibility', 'visible');
-      $('.fight-screen').css('visibility', 'hidden');
+        $('#winnerBox').text(`It\'s A Draw. You Both Lose =(`);
+        p1HPVal = 0;
+        p2HPVal = 0;
+        clearInterval(tickDown);
+        timer = 99;
+        timerBox.text(timer);
+        $('.end-screen').css('visibility', 'visible');
+        $('.fight-screen').css('visibility', 'hidden');
       }
     // Closes checkWin()
     }
