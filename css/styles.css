@@ -160,7 +160,31 @@ body {
   position: absolute;
   text-shadow: 1px 1px #909;
   top: 3%;
+  right: 430px;
+  width: 350px;
+  height: 4%;
+  background-color: yellow;
+  padding: 5px;
+  font-size: 25px;
+  border: 1px solid black;
+  z-index: 1;
+}
+.player-1-hp-shadow {
+  position: absolute;
+  top: 3%;
   left: 10px;
+  width: 350px;
+  height: 4%;
+  padding: 5px;
+  background-color: red;
+  border: 1px solid white;
+  z-index: 0
+}
+.player-2-hp {
+  position: absolute;
+  text-shadow: 1px 1px #555;
+  top: 3%;
+  left: 430px;
   width: 350px;
   height: 4%;
   background-color: yellow;
@@ -168,17 +192,16 @@ body {
   font-size: 25px;
   border: 1px solid black;
 }
-.player-2-hp {
+.player-2-hp-shadow {
   position: absolute;
-  text-shadow: 1px 1px #555;
   top: 3%;
   right: 10px;
   width: 350px;
   height: 4%;
-  background-color: yellow;
   padding: 5px;
-  font-size: 25px;
-  border: 1px solid black;
+  background-color: red;
+  border: 1px solid white;
+  z-index: -1
 }
 .ko-box {
   background: red;

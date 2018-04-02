@@ -118,6 +118,13 @@ $( document ).ready(function() {
     // Update HP Span Values
     p1HPSpan.html(p1HPVal);
     p2HPSpan.html(p2HPVal);
+    // /////////////////////////////////////////////////////////////////////////
+    // Post MVP Health Bars
+    function p1HPBar () {
+     return 350 - (350-((p1HPVal * 350)/101));
+    }
+
+    console.log(p1HPBar)
   // ///////////////////////////////////////////////////////////////////////////
   // Player Name Display
   // Name Displays
@@ -328,10 +335,10 @@ $( document ).ready(function() {
       if (playerHPVal > 0) {
       playerHPVal -= damageVal;
       playerHPSpan.text(playerHPVal);
+      $('.player-1-hp').css('width', p1HPBar);
       return playerHPVal
       }
     }
-
   //////////////////////////////////////////////////////////////////////////////
   // *** PostMVP Timer
     let timerBox = $('.timer-box');
