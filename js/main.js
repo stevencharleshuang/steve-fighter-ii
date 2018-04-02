@@ -128,7 +128,7 @@ $( document ).ready(function() {
       for (let keyPressed in keys) {
         if (!keys.hasOwnProperty(keyPressed)) continue;
     ////////////////////////////////////////////////////////////////////////////
-    // Player 1 Controls
+    // Player 1 Motion Controls
         // 'a' moves left
         else if (keyPressed == 65 && (p1HPVal > 0 || p2HPVal > 0) &&
           // Prevent P1 From Moving Past Left Arena Wall
@@ -154,7 +154,7 @@ $( document ).ready(function() {
         //  $(player1).animate({top: "+=5"}, 0);
         // }
     ////////////////////////////////////////////////////////////////////////////
-    // Player 2 Controls
+    // Player 2 Motion Controls
         // 'l' moves left
         else if (keyPressed == 76 && (p1HPVal > 0 && p2HPVal > 0) &&
           // Prevent Pushing P1 Div Past Left Arena Wall
@@ -179,21 +179,21 @@ $( document ).ready(function() {
         // else if (keyPressed == 186) {
         //     $(player2).animate({top: "+=5"}, 0);
         // }
-        ////////////////////////////////////////////////////////////////////////
-        // Blocking System
+    ////////////////////////////////////////////////////////////////////////
+    // Blocking System
         // Player 1 Block - 'q'
         else if (keyPressed == 81) {
           // Increase div width
           if (p1HPVal > 0 && p2HPVal > 0) {
             $(player1).css({'width': '155','background-color': 'purple'});
-            if (player2BCR.right < arenaRightWall.right){
-              $(player2).animate({right: "-=1"}, 0);
-              // console.log('block');
-              // console.log(`P1 HP: ${p1HPVal}`)
-            }
+            // if (player2BCR.right < arenaRightWall.right){
+            //   $(player2).animate({right: "-=1"}, 0);
+            //   // console.log('block');
+            //   // console.log(`P1 HP: ${p1HPVal}`)
+            // }
           }
           // Return to original Div width
-          $(document).keyup(function(){
+          $(document).keyup(function () {
             $(player1).css({'width': '150','background-color': 'blue'});
           });
         }
@@ -202,14 +202,14 @@ $( document ).ready(function() {
           // Increase div width
           if (p1HPVal > 0 && p2HPVal > 0) {
             $(player2).css({'width': '155','background-color': 'purple'});
-            if (player1BCR.left < arenaLeftWall.left){
-              $(player1).animate({left: "-=1"}, 0);
-              // console.log('block');
-              // console.log(`P1 HP: ${p1HPVal}`)
-            }
+            // if (player1BCR.left < arenaLeftWall.left){
+            //   $(player1).animate({left: "-=1"}, 0);
+            //   // console.log('block');
+            //   // console.log(`P1 HP: ${p1HPVal}`)
+            // }
           }
           // Return to original Div width
-          $(document).keyup(function(){
+          $(document).keyup(function () {
             $(player2).css({'width': '150','background-color': 'green'});
           });
         }
@@ -224,7 +224,7 @@ $( document ).ready(function() {
       let attacks = true;
       let player1BCR = player1[0].getBoundingClientRect();
       let player2BCR = player2[0].getBoundingClientRect();
-        $(document).on('keydown', function (e) {
+      $(document).on('keydown', function (e) {
         ////////////////////////////////////////////////////////////////////////
         // Player Attacks
         // Player Attacks - Punch
@@ -251,6 +251,7 @@ $( document ).ready(function() {
            }
         }
         ////////////////////////////////////////////////////////////////////////
+        // Player Key Bindings-Attack Calls
         // Player 1
         // Punch - 'e'
         if (e.keyCode == 69) {
@@ -296,43 +297,6 @@ $( document ).ready(function() {
       // console.log(blueBCR)
     // Closes hitDetect()
     }
-  //////////////////////////////////////////////////////////////////////////////
-  // Test Hit Buttons
-    // P1 Hit P2 Button
-    $('#hit-player2').on('click', function() {
-      // $('.end-screen').css('visibility', 'visible');
-      // $('.fight-screen').css('visibility', 'hidden');
-      if (p1HPVal > 0 && p2HPVal > 0) {
-        // HP Reduction
-        p2HPVal -= 10;
-        p2HPSpan.text(p2HPVal);
-        checkWin();
-      }
-    });
-    // P2 Hit P1 Button
-    $('#hit-player1').on('click', function() {
-      // $('.end-screen').css('visibility', 'visible');
-      // $('.fight-screen').css('visibility', 'hidden');
-      // console.log(p1HPVal)
-      if (p1HPVal > 0 && p2HPVal > 0) {
-        // HP Reduction
-        p1HPVal -= 10;
-        p1HPSpan.text(p1HPVal);
-        checkWin();
-      }
-    });
-    // *** Cheat Win (for testing and debugging)
-    $('#cheat-btn').on('click', function() {
-      $('.end-screen').css('visibility', 'visible');
-      $('.fight-screen').css('visibility', 'hidden');
-      if (p1HPVal > 0 && p2HPVal > 0) {
-        // HP Reduction
-        p2HPVal -= 101;
-        p2HPSpan.text(p2HPVal);
-        checkWin();
-        return playerHPVal
-      }
-    });
     ////////////////////////////////////////////////////////////////////////////
     // Damage System
     function damage (playerHPVal, damageVal, playerHPSpan) {
@@ -355,6 +319,37 @@ $( document ).ready(function() {
         checkWin();
       }
     }, 1000)
+      //////////////////////////////////////////////////////////////////////////////
+  // Test Hit Buttons
+    // P1 Hit P2 Button
+    $('#hit-player2').on('click', function() {
+      if (p1HPVal > 0 && p2HPVal > 0) {
+        // HP Reduction
+        p2HPVal -= 10;
+        p2HPSpan.text(p2HPVal);
+        checkWin();
+      }
+    });
+    // P2 Hit P1 Button
+    $('#hit-player1').on('click', function() {
+      // console.log(p1HPVal)
+      if (p1HPVal > 0 && p2HPVal > 0) {
+        // HP Reduction
+        p1HPVal -= 10;
+        p1HPSpan.text(p1HPVal);
+        checkWin();
+      }
+    });
+    // *** Cheat Win (for testing and debugging)
+    $('#cheat-btn').on('click', function() {
+      if (p1HPVal > 0 && p2HPVal > 0) {
+        // HP Reduction
+        p2HPVal -= 101;
+        p2HPSpan.text(p2HPVal);
+        checkWin();
+      }
+    });
+
   //////////////////////////////////////////////////////////////////////////////
   // * Win-Case:
     // if Player 1 HP <= 0, Player 2 Wins
@@ -403,6 +398,7 @@ $( document ).ready(function() {
         $('.end-screen').css('visibility', 'visible');
         $('.fight-screen').css('visibility', 'hidden');
       }
+
     // Closes checkWin()
     }
   // Closes Fight Function
