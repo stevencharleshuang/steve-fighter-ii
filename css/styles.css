@@ -1,16 +1,12 @@
 body {
   background-color: black;
-/*  background-image: url('../images/streetfighterlogo.png');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center top;*/
   text-align: center;
   text-shadow: 4px 4px black;
   font-family: 'VT323', monospace;
   letter-spacing: 3px;
 }
 .wrapper {
-  margin: 10%;
+  margin: 1%;
 }
 .landing-screen{
   position: absolute;
@@ -22,39 +18,26 @@ body {
   visibility: visible;
 }
 .player1-form {
-/*  margin: 20px;*/
-/*  height: 400px;
-  width: 250px;*/
   font-size: 30px;
   border-radius: 10px;
-/*  background-color: rgba(100,100,100,.7);*/
   display: inline-block;
   color: yellow;
   vertical-align: bottom;
 }
 .player2-form {
-/*  margin: 20px;*/
-/*  height: 400px;
-  width: 250px;*/
   font-size: 30px;
   border-radius: 10px;
-/*  background-color: rgba(100,100,100,.7);*/
   display: inline-block;
   color: yellow;
   vertical-align: bottom;
 }
 #logo {
-  /*background-color: blue;*/
   position: relative;
   height: auto;
   width: 100%;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%)
-/*  height: auto;
-  max-width: 790px;*/
-  /*-webkit-transform: translateX(-50%);*/
-  /*transform: translateX(-50%)*/
 }
 
 #start-btn {
@@ -70,15 +53,18 @@ body {
   background-color: lightgray;
   border-radius: 10px;
 /*  padding: 5px;*/
+  box-shadow:none;
 }
 #start-btn:hover {
   background-color: #aaa;
   cursor: pointer;
+  animation: glow .3s linear .5s infinite alternate;
 }
-/*#start-btn:hover ~ .player2-form {
-  background-image: url('../images/tenor.gif');
-  background-size: cover;
-}*/
+@keyframes glow {
+    0% {box-shadow: inset 0 0 0px #3cf;}
+    50% {box-shadow: inset 0 0 15px #3cf;}
+    100% {box-shadow: inset 0 0 30px #3cf;}
+}
 .player1-selection {
   margin: 20px;
   height: 400px;
@@ -153,8 +139,6 @@ body {
   right: 550px;
   height: 300px;
   width: 150px;
-
-  /*direction: rtl;*/
 }
 .player-1-hp {
   position: absolute;
@@ -211,7 +195,6 @@ body {
   width: 62px;
   height: 42px;
   font-weight: 500;
-/*  text-shadow: 5px 4px #608;*/
   -webkit-text-stroke: 3px #608;
   margin: 0 auto;
   font-family: 'Bevan', cursive;
@@ -231,7 +214,6 @@ body {
   font-size: 50px;
   width: 60px;
   height: auto;
-/*  border: 1px black solid;*/
 }
 .player-1-controls {
   font-size: 20px;
