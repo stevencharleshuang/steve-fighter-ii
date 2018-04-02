@@ -22,23 +22,23 @@ body {
   visibility: visible;
 }
 .player1-form {
-  margin: 20px;
-  height: 400px;
-  width: 250px;
+/*  margin: 20px;*/
+/*  height: 400px;
+  width: 250px;*/
   font-size: 30px;
   border-radius: 10px;
-  background-color: rgba(100,100,100,.7);
+/*  background-color: rgba(100,100,100,.7);*/
   display: inline-block;
   color: yellow;
   vertical-align: bottom;
 }
 .player2-form {
-  margin: 20px;
-  height: 400px;
-  width: 250px;
+/*  margin: 20px;*/
+/*  height: 400px;
+  width: 250px;*/
   font-size: 30px;
   border-radius: 10px;
-  background-color: rgba(100,100,100,.7);
+/*  background-color: rgba(100,100,100,.7);*/
   display: inline-block;
   color: yellow;
   vertical-align: bottom;
@@ -79,6 +79,31 @@ body {
   background-image: url('../images/tenor.gif');
   background-size: cover;
 }*/
+.player1-selection {
+  margin: 20px;
+  height: 400px;
+  width: 250px;
+  border-radius: 10px;
+  background-color: rgba(100,100,100,.7);
+  display: inline-block;
+  vertical-align: bottom;
+}
+.player2-selection {
+  margin: 20px;
+  height: 400px;
+  width: 250px;
+  border-radius: 10px;
+  background-color: rgba(100,100,100,.7);
+  display: inline-block;
+  vertical-align: bottom;
+}
+.new-challenger-btns {
+  position: relative;
+  top: 220px;
+}
+#player1-reset {}
+#player2-reset {}
+
 #landing-ftr {
   font-size: 25px;
   margin: 20px;
@@ -250,6 +275,11 @@ body {
 #landing-btn {
   display: block;
   margin: 0 auto;
+}
+.player-select p {
+  font-size: 30px;
+  color: white;
+  text-shadow: 2px 2px #222;
 }
 button {
   font-size: 20px;

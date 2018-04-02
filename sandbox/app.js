@@ -362,8 +362,61 @@ if (rect1.x < rect2.x + rect2.width &&
 //   }
 //   document.addEventListener('keydown', (e) => moveDiv(e));
 // })();
+////////////////
+// Landing Screen Dom Manipulation
+/*
+        <div class="player-select">
+          <!-- Begin All P1 Options -->
+          <div class = "player1-selection">
+            <!-- Begin P1 Form -->
+            <div class="player1-form">
+              <form id="player1-input">
+                Player 1 Name:
+                <input type="text" id="player1-name" placeholder="Name"><br><br>
+                <button id="p1-nameSubmit">Kick Ass!</button>
+              </form>
+            <!-- End P1 Form -->
+            </div>
+            <button id="player1-reset">New Challenger</button>
+            <p>a = left<br>d = right<br>e = punch<br>q = block</p>
+          </div>
+          <!-- End All P1 Options -->
+            <button id="start-btn">Let's Kick Some Ass!</button>
+          <!-- Begin All P2 Options -->
+          <div class="player2-selection">
+            <!-- Begin P2 Form -->
+            <div class="player2-form">
+              <form id="player2-input">
+                Player 2 Name:
+                <input type="text" id="player2-name" placeholder="Name"><br><br>
+                <button id="p2-nameSubmit">Kick Ass!</button>
+              </form>
+            <!-- End P2 Form -->
+            </div>
+            <button id="player2-reset">New Challenger</button>
+            <p>l = left<br>' = right<br>o = punch<br>[ = block</p>
+          </div>
+          <!-- End All P2 Options -->
+        </div>
+*/
+/////////
 
-
+$('.player1-selection').prepend(`<!-- Begin P1 Form -->
+            <div class="player1-form">
+              <form id="player1-input">
+                Player 1 Name:
+                <input type="text" id="player1-name" placeholder="Name"><br><br>
+                <button id="p1-nameSubmit">Kick Ass!</button>
+              </form>
+            <!-- End P1 Form -->`);
+$('.player2-selection').prepend(`<!-- Begin P2 Form -->
+            <div class="player2-form">
+              <form id="player2-input">
+                Player 2 Name:
+                <input type="text" id="player2-name" placeholder="Name"><br><br>
+                <button id="p2-nameSubmit">Kick Ass!</button>
+              </form>
+            <!-- End P2 Form -->`);
 
 
 

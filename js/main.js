@@ -16,6 +16,7 @@ $( document ).ready(function() {
   visible | css.() |
 * Start-btn on click, hide landing-screen, unhide fight-screen
 */
+  //////////////////////////////////////////////////////////////////////////////
   // Get Player Names
   // Player Name Storage
   let p1Name;
@@ -30,21 +31,45 @@ $( document ).ready(function() {
     $('body').css('background-image', '')
   });
   // p1 Form Event Listener
-  $('#p1-nameSubmit').click(function(event) {
+  $('#p1-nameSubmit').click(function () {
     // Get Name text
     p1Name = $('#player1-name').val();
     // Remove p1 form, replace with name text
-    $('#player1-input').replaceWith(`Player 1: <br/>${p1Name}`);
+    $('.player1-form').replaceWith(`<div class="player1-form">Player 1: <br/>${p1Name}</div>`);
   });
   // p2 Form Event Listener
-  $('#p2-nameSubmit').click(function(event) {
+  $('#p2-nameSubmit').click(function () {
     // Get Name text
     p2Name = $('#player2-name').val();
-      // Remove p2 form, replace with name text
-    $('#player2-input').replaceWith(`Player 2: <br/>${p2Name}`);
+
+      // Remove p1 form, replace with name text
+    $('.player2-form').replaceWith(`<div class="player2-form">Player 2: <br/>${p1Name}</div>`);
+    event.preventDefault();
   });
   // P1 Name Reset
+  $('#player1-reset').on('click', function (event) {
+    $('.player1-form').replaceWith(`<!-- Begin P1 Form -->
+              <div class="player1-form">
+                <form id="player1-input">
+                  Player 1 Name:
+                  <input type="text" id="player1-name" placeholder="Name"><br><br>
+                  <button id="p1-nameSubmit">Kick Ass!</button>
+                </form>
+              <!-- End P1 Form -->`);
+    event.preventDefault();
+  });
   // P2 Name Reset
+  $('#player2-reset').on('click', function () {
+    $('.player2-form').replaceWith(`<!-- Begin P2 Form -->
+              <div class="player2-form">
+                <form id="player2-input">
+                  Player 2 Name:
+                  <input type="text" id="player2-name" placeholder="Name"><br><br>
+                  <button id="p2-nameSubmit">Kick Ass!</button>
+                </form>
+              <!-- End P2 Form -->`);
+    event.preventDefault();
+  });
   // Start Button
   $('#start-btn').on('click', function(){
     // console.log('start!');

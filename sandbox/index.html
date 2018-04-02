@@ -3,18 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <title>Project 1 Sandbox</title>
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bevan" rel="stylesheet">
   <script src="../js/jquery-3.3.1.min.js"></script>
   <script src="app.js" type="text/javascript" charset="utf-8" async defer></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-<center>
-<div class="landing-screen">
-<button class="start-button"></div>
+  <div class="wrapper">
+    <div class="landing-screen">
+      <div class="world-on-fire">
+        <center>
+        <img src="../images/stevefighterlogo.png" id="logo">
+        </center>
+        <div class="player-select">
+          <!-- Begin All P1 Options -->
+          <div class = "player1-selection">
 
-</div>
+            <button class="new-challenger-btns" id="player1-reset">New Challenger</button>
+            <p>a = left<br>d = right<br>e = punch<br>q = block</p>
+          </div>
+          <!-- End All P1 Options -->
+            <button id="start-btn">Let's Kick Some Ass!</button>
+          <!-- Begin All P2 Options -->
+          <div class="player2-selection">
+            <!-- Begin P2 Form -->
+            <div class="player2-form">
+              <form id="player2-input">
+                Player 2 Name:
+                <input type="text" id="player2-name" placeholder="Name"><br><br>
+                <button id="p2-nameSubmit">Kick Ass!</button>
+              </form>
+            </div>
+            <!-- End P2 Form -->
+            <button class="new-challenger-btns" id="player2-reset">New Challenger</button>
+            <p>l = left<br>' = right<br>o = punch<br>[ = block</p>
+          </div>
+          <!-- End All P2 Options -->
+        </div>
+        <div id="landing-ftr">Steve Fighter 1 was a flop =(</div>
+      </div>
+    </div>
 <div class="fight-screen">
-  	
+
   <div class="blue-box"></div>
   <div class="green-box"></div>
 </div>
