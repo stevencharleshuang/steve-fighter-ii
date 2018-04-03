@@ -22,8 +22,8 @@ $(document).ready(function() {
   let p1Name;
   let p2Name;
   // Target #player1-input and #player2-input
-  let p1Input = $('#player1-input');
-  let p2Input = $('#player2-input');
+  // let p1Input = $('#player1-input');
+  // let p2Input = $('#player2-input');
   $('#start-btn').hover(function() {
     // console.log('hover');
     $('body').css({
@@ -66,7 +66,7 @@ $(document).ready(function() {
     event.preventDefault();
   });
   // P2 Name Reset
-  $('#player2-reset').on('click', function() {
+  $('#player2-reset').on('click', function(event) {
     $('.player2-form').replaceWith(
       `<!-- Begin P2 Form -->
               <div class="player2-form">
