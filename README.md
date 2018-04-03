@@ -167,6 +167,7 @@ Smooth Div Movement Controls Bound to Keypresses:
 Image Sources:
 * [Arena JPG](https://i.ytimg.com/vi/7Uk3S2Qti4g/maxresdefault.jpg)
 * [Ken PNG](https://davidwalsh.name/street-fighter?bcsi-ac-5b340027a7203c96=211D2BD000000108uqkkjutwcl80QiW6KkPOT7583goEAAAACAEAACvj0wAAjScAAgAAAPV5BQA=)
+* [Ryu PNG](http://i.imgur.com/bkYVEe5.png)
 * [Ken Win](https://vignette.wikia.nocookie.net/streetfighter/images/3/37/Ken-ssf2tv-portrait.gif/revision/latest?cb=20100717033005)
 * [Ryu Win](https://vignette.wikia.nocookie.net/streetfighter/images/f/ff/Ryu-portrait-turbo-revival.gif/revision/latest?cb=20100717032454)
 * [Ken Lose](https://vignette.wikia.nocookie.net/streetfighter/images/f/fd/Ken-hurt.gif/revision/latest?cb=20140419140821)
