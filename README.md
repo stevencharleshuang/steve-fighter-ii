@@ -119,6 +119,20 @@ jQuery: Used for DOM element targeting, DOM element creation and event listeners
       // 350px is the initial width of the HPBar div
       return 350 - (350 - ((p1HPVal * 350) / 101));
     }
+    ...
+    function damage(player, playerHPVal, damageVal, playerHPSpan) {
+      if (playerHPVal > 0) {
+        playerHPVal -= damageVal;
+        // For Testing
+        // playerHPSpan.text(playerHPVal);
+        if (player === 1) {
+          $('.player-1-hp').css('width', p1HPBar);
+        } else if (player === 2) {
+          $('.player-2-hp').css('width', p2HPBar);
+        }
+        return playerHPVal
+      }
+    }
 This is the code that dynamically updates the size of the health bar based on damage taken by the player. I am proud of this piece of code because I conceived the logic and mathed my way through it myself.
 
 ## jQuery Discoveries
