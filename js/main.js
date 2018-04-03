@@ -124,6 +124,7 @@ $(document).ready(function() {
     });
     $('.player-1-hp').css('width', '350');
     $('.player-2-hp').css('width', '350');
+
     // /////////////////////////////////////////////////////////////////////////
     // HP System
     // Initialize HP values
