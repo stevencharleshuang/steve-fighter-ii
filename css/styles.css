@@ -8,6 +8,14 @@ body {
 .wrapper {
   margin: 1%;
 }
+.music-player {
+  position: relative;
+  height: 100%;
+  top: 625px;
+  font-size: 20px;
+  color: green;
+  text-align: center;
+}
 .landing-screen{
   position: absolute;
   left: 50%;
