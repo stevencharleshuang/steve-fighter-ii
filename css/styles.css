@@ -15,6 +15,7 @@ body {
   font-size: 20px;
   color: green;
   text-align: center;
+  text-shadow: 1px 1px black;
 }
 .landing-screen{
   position: absolute;
