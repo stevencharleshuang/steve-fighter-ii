@@ -2,7 +2,7 @@
 * [Steve Fighter - Bit Balloon](http://eager-blackwell-7636a3.bitballoon.com)
 * [Steve Fighter - Git Hub Pages](https://git.generalassemb.ly/pages/stevencharleshuang/project-1-game/)
 * [Presentation Slides (Speaker Notes Included)](https://docs.google.com/presentation/d/1P3_Wn4-xk00mPowt-cnCu-mRpIEM-Cow6rBtHqy_Gh4/edit?usp=sharing) 
-* [Presentation Slides PDF (Without Speaker Notes)](assets/WDI_Unit_1_Presentation_-_Steve_Fighter.pdf) 
+* [Presentation Slides PDF (Without Speaker Notes)](assets/Unit-1-Presentation-Steve-Fighter.pdf) 
 
 # Project Overview
 Day | Deliverable
