@@ -321,10 +321,10 @@ $(document).ready(function() {
           if (hitDetect() === true && (p1HPVal > 0 && p2HPVal > 0)) {
             if (player === player1) {
               // Damage Function Args: (playerDamaged,playerHPVal, damageVal, playerHPSpan)
-              p2HPVal = damage(2, p2HPVal, 5, p2HPSpan);
+              p2HPVal = damage(2, p2HPVal, 1, p2HPSpan);
               checkWin();
             } else if (player === player2) {
-              p1HPVal = damage(1, p1HPVal, 5, p1HPSpan)
+              p1HPVal = damage(1, p1HPVal, 1, p1HPSpan)
               checkWin();
             }
           }
@@ -350,10 +350,10 @@ $(document).ready(function() {
           if (hitDetect() === true && (p1HPVal > 0 && p2HPVal > 0)) {
             if (player === player1) {
               // Damage Function Args: (playerDamaged,playerHPVal, damageVal, playerHPSpan)
-              p2HPVal = damage(2, p2HPVal, 10, p2HPSpan);
+              p2HPVal = damage(2, p2HPVal, 3, p2HPSpan);
               checkWin();
             } else if (player === player2) {
-              p1HPVal = damage(1, p1HPVal, 10, p1HPSpan)
+              p1HPVal = damage(1, p1HPVal, 3, p1HPSpan)
               checkWin();
             }
           }
@@ -431,7 +431,7 @@ $(document).ready(function() {
     ////////////////////////////////////////////////////////////////////////////
     // *** PostMVP Timer
     let timerBox = $('.timer-box');
-    let timer = 99;
+    let timer = 30;
     let tickDown = setInterval(function() {
       timer -= 1;
       timerBox.text(timer);
@@ -485,7 +485,7 @@ $(document).ready(function() {
         // Stop Timer
         clearInterval(tickDown);
         // Re-inits Timer
-        timer = 99;
+        timer = 30;
         timerBox.text(timer);
         // Winner Decs
         $('#winnerBox').text(`${p1Name} Wins!`);
@@ -502,7 +502,7 @@ $(document).ready(function() {
         p1HPVal = 0;
         p2HPVal = 0;
         clearInterval(tickDown);
-        timer = 99;
+        timer = 30;
         timerBox.text(timer);
         $('.end-screen').css('visibility', 'visible');
         $('.fight-screen').css('visibility', 'hidden');
@@ -514,7 +514,7 @@ $(document).ready(function() {
         p1HPVal = 0;
         p2HPVal = 0;
         clearInterval(tickDown);
-        timer = 99;
+        timer = 30;
         timerBox.text(timer);
         $('.end-screen').css('visibility', 'visible');
         $('.fight-screen').css('visibility', 'hidden');
