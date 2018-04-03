@@ -176,6 +176,7 @@ Smooth Div Movement Controls Bound to Keypresses:
 
 Image Sources:
 * [Arena JPG](https://i.ytimg.com/vi/7Uk3S2Qti4g/maxresdefault.jpg)
+* [World-On-Fire GIF](https://media.tenor.com/images/265d42069be85a9192b3bb4ee72f5f71/tenor.gif)
 * [Ken PNG](https://davidwalsh.name/street-fighter?bcsi-ac-5b340027a7203c96=211D2BD000000108uqkkjutwcl80QiW6KkPOT7583goEAAAACAEAACvj0wAAjScAAgAAAPV5BQA=)
 * [Ryu PNG](http://i.imgur.com/bkYVEe5.png)
 * [Ken Win](https://vignette.wikia.nocookie.net/streetfighter/images/3/37/Ken-ssf2tv-portrait.gif/revision/latest?cb=20100717033005)
