@@ -38,7 +38,8 @@ $(document).ready(function() {
     // Get Name text
     p1Name = $('#player1-name').val();
     // Remove p1 form, replace with name text
-    $('.player1-form').replaceWith(`<div class="player1-form">Player 1: <br/>${p1Name}</div>`);
+    $('.player1-form').replaceWith(
+      `<div class="player1-form">Player 1: <br/>${p1Name}</div>`);
   });
   // p2 Form Event Listener
   $('#p2-nameSubmit').click(function() {
@@ -46,31 +47,36 @@ $(document).ready(function() {
     p2Name = $('#player2-name').val();
 
     // Remove p1 form, replace with name text
-    $('.player2-form').replaceWith(`<div class="player2-form">Player 2: <br/>${p2Name}</div>`);
+    $('.player2-form').replaceWith(
+      `<div class="player2-form">Player 2: <br/>${p2Name}</div>`);
     event.preventDefault();
   });
   // P1 Name Reset
   $('#player1-reset').on('click', function(event) {
-    $('.player1-form').replaceWith(`<!-- Begin P1 Form -->
+    $('.player1-form').replaceWith(
+      `<!-- Begin P1 Form -->
               <div class="player1-form">
                 <form id="player1-input">
                   Player 1 Name:
                   <input type="text" id="player1-name" placeholder="Name"><br><br>
                   <button id="p1-nameSubmit">Kick Ass!</button>
                 </form>
-              <!-- End P1 Form -->`);
+              <!-- End P1 Form -->`
+    );
     event.preventDefault();
   });
   // P2 Name Reset
   $('#player2-reset').on('click', function() {
-    $('.player2-form').replaceWith(`<!-- Begin P2 Form -->
+    $('.player2-form').replaceWith(
+      `<!-- Begin P2 Form -->
               <div class="player2-form">
                 <form id="player2-input">
                   Player 2 Name:
                   <input type="text" id="player2-name" placeholder="Name"><br><br>
                   <button id="p2-nameSubmit">Kick Ass!</button>
                 </form>
-              <!-- End P2 Form -->`);
+              <!-- End P2 Form -->`
+    );
     event.preventDefault();
   });
   // Start Button
@@ -192,7 +198,7 @@ $(document).ready(function() {
           // Prevent Pushing P2 Div Past Right Arena Wall
           (player2BCR.right <= arenaRightWall.right) &&
           // Prevent Div Overlap
-          (player1BCR.right <= (player2BCR.left - 30))) {
+          (player1BCR.right <= (player2BCR.left - 10))) {
           $(player1).animate({
             left: "+=5"
           }, 0);
@@ -209,7 +215,7 @@ $(document).ready(function() {
           // Prevent Pushing P1 Div Past Left Arena Wall
           (player1BCR.left >= arenaLeftWall.left) &&
           // Prevent Div Overlap
-          (player2BCR.left >= (player1BCR.right + 30))) {
+          (player2BCR.left >= (player1BCR.right + 10))) {
           $(player2).animate({
             right: "+=5"
           }, 0);
@@ -235,49 +241,49 @@ $(document).ready(function() {
         ////////////////////////////////////////////////////////////////////////
         // Blocking System
         // Player 1 Block - 'q'
-        else if (keyPressed == 81) {
-          // Increase div width
-          if (p1HPVal > 0 && p2HPVal > 0) {
-            $(player1).css({
-              'width': '155',
-              'background-color': 'purple'
-            });
-            // if (player2BCR.right < arenaRightWall.right){
-            //   $(player2).animate({right: "-=1"}, 0);
-            //   // console.log('block');
-            //   // console.log(`P1 HP: ${p1HPVal}`)
-            // }
-          }
-          // Return to original Div width
-          $(document).keyup(function() {
-            $(player1).css({
-              'width': '150',
-              // 'background-color': 'blue'
-            });
-          });
-        }
-        // Player 2 Block - '['
-        else if (keyPressed == 219) {
-          // Increase div width
-          if (p1HPVal > 0 && p2HPVal > 0) {
-            $(player2).css({
-              'width': '155',
-              'background-color': 'purple'
-            });
-            // if (player1BCR.left < arenaLeftWall.left){
-            //   $(player1).animate({left: "-=1"}, 0);
-            //   // console.log('block');
-            //   // console.log(`P1 HP: ${p1HPVal}`)
-            // }
-          }
-          // Return to original Div width
-          $(document).keyup(function() {
-            $(player2).css({
-              'width': '150',
-              // 'background-color': 'green'
-            });
-          });
-        }
+        // else if (keyPressed == 81) {
+        //   // Increase div width
+        //   if (p1HPVal > 0 && p2HPVal > 0) {
+        //     $(player1).css({
+        //       'width': '155',
+        //       'background-color': 'purple'
+        //     });
+        //     // if (player2BCR.right < arenaRightWall.right){
+        //     //   $(player2).animate({right: "-=1"}, 0);
+        //     //   // console.log('block');
+        //     //   // console.log(`P1 HP: ${p1HPVal}`)
+        //     // }
+        //   }
+        //   // Return to original Div width
+        //   $(document).keyup(function() {
+        //     $(player1).css({
+        //       'width': '150',
+        //       // 'background-color': 'blue'
+        //     });
+        //   });
+        // }
+        // // Player 2 Block - '['
+        // else if (keyPressed == 219) {
+        //   // Increase div width
+        //   if (p1HPVal > 0 && p2HPVal > 0) {
+        //     $(player2).css({
+        //       'width': '155',
+        //       'background-color': 'purple'
+        //     });
+        //     // if (player1BCR.left < arenaLeftWall.left){
+        //     //   $(player1).animate({left: "-=1"}, 0);
+        //     //   // console.log('block');
+        //     //   // console.log(`P1 HP: ${p1HPVal}`)
+        //     // }
+        //   }
+        //   // Return to original Div width
+        //   $(document).keyup(function() {
+        //     $(player2).css({
+        //       'width': '150',
+        //       // 'background-color': 'green'
+        //     });
+        //   });
+        // }
         ////////////////////////////////////////////////////////////////////////
         // Closes for-continue
       }
@@ -294,25 +300,23 @@ $(document).ready(function() {
         // Player Attacks
         // Player Attacks - Punch
         function punch(player) {
-          // Increase div width
           // Increase Player Div Width
           $(player).css('width', '200');
-          player2.toggleClass('k-punch');
-          // Change Player Color
-          $(player).css('background-color', 'yellow');
+          // player2.toggleClass('k-punch');
+          // For Testing - Change Player Color
+          // $(player).css('background-color', 'yellow');
           if (player === player1) {
             // console.log('p1 hit')
-            player1.css('background-position', '-180px -460px');
-          }
-          else if (player===player2){
+            $(player1).css('background-position', '-150px 0px');
+          } else if (player === player2) {
             // console.log(`p2 hit`)
-            player2.css('background-position', `2150px -552px`);
-            // player1.css({ 'background-color': 'red' });
+            $(player2).css('background-position', '-150px 0px');
           }
 
           // Auto-Return Player Div Width
           setTimeout(function() {
             $(player).css('width', '150');
+            $(player).css('background-position', '0px 0px');
           }, 200);
           if (hitDetect() === true && (p1HPVal > 0 && p2HPVal > 0)) {
             if (player === player1) {
@@ -327,14 +331,21 @@ $(document).ready(function() {
         }
 
         function kick(player) {
-          // Increase div width
           // Increase Player Div Width
           $(player).css('width', '225');
-          // Change Player Color
-          $(player).css('background-color', 'yellow');
+          // For Testing - Change Player Color
+          // $(player).css('background-color', 'yellow');
+          if (player === player1) {
+            // console.log('p1 hit')
+            $(player1).css('background-position', '-350px 0px');
+          } else if (player === player2) {
+            // console.log(`p2 hit`)
+            $(player2).css('background-position', '-350px 0px');
+          }
           // Auto-Return Player Div Width
           setTimeout(function() {
             $(player).css('width', '150');
+            $(player).css('background-position', '0px 0px');
           }, 200);
           if (hitDetect() === true && (p1HPVal > 0 && p2HPVal > 0)) {
             if (player === player1) {
@@ -387,16 +398,17 @@ $(document).ready(function() {
         player1BCR.height + player1BCR.y > player2BCR.y) {
         ////////////////////////////////////////////////////////////////////////
         // Hit Detection Clauses
-        // Divs change color
-        $(player1).css('background-color', 'red');
-        $(player2).css('background-color', 'pink');
+        // For Testing - Divs change color
+        // $(player1).css('background-color', 'red');
+        // $(player2).css('background-color', 'pink');
         return true;
       }
       // Non-Hit Clauses
-      else {
-        // $(player1).css('background-color', 'blue');
-        // $(player2).css('background-color', 'green');
-      }
+      // For Testing - Div Color Reset
+      // else {
+      // $(player1).css('background-color', 'blue');
+      // $(player2).css('background-color', 'green');
+      // }
       // console.log(player1BCR);
       // console.log(blueBCR)
       // Closes hitDetect()
@@ -495,8 +507,6 @@ $(document).ready(function() {
         $('.end-screen').css('visibility', 'visible');
         $('.fight-screen').css('visibility', 'hidden');
         $('#k-win, #r-lose').css('visibility', 'visible');
-        // $(player1).css('width', '150');
-        // $(player2).css('width', '150');
       }
       // Draw Clause
       else if (timer === 0 && (p1HPVal > 0 && p2HPVal > 0)) {

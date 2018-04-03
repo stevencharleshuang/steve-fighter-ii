@@ -139,13 +139,11 @@ body {
   /*display: inline-block;*/
   /*background-color: blue;*/
   /*https://pixlanim8r.wordpress.com/tag/sprite-animation/*/
-/*  background: url('../images/ryu.png') no-repeat;
-  background-size: 150px 300px;*/
-  background-image: url('../images/ryu.png');
-  background-size: 5400px;
+  background: url('../images/ryu-sprite.png') no-repeat;
+  /*background-image: url('../images/ryu.png');*/
   /*background-position: -180px -460px*/;
-  animation: ryu-resting .8s steps(4) infinite;
-  top: 300px;
+  /*animation: ryu-resting .8s steps(4) infinite;*/
+  top: 320px;
   left: 100px;
   height: 290px;
   width: 150px;
@@ -165,19 +163,18 @@ body {
   /*display: inline-block;*/
   /*background-color: green;*/
   /*https://pixlanim8r.wordpress.com/tag/sprite-animation/*/
-  background-image: url('../images/ken.png');
-  background-size: 1720px 2808px;
-  background-position: /*2150px -552px*/;
-  animation: ken-resting .8s steps(4) infinite;
-  top: 300px;
+  background-image: url('../images/ken-sprite.png');
+/*  background-position: 2150px -552px;*/
+/*  animation: ken-resting .8s steps(4) infinite;*/
+  top: 320px;
   right: 550px;
   height: 290px;
   width: 150px;
 }
-@-webkit-keyframes ken-resting {
+/*@-webkit-keyframes ken-resting {
   from {background-position: 1910px -275px;}
   to {background-position: 2900px -275px;}
-}
+}*/
 .player-1-hp {
   position: absolute;
   text-shadow: 1px 1px #909;
@@ -254,9 +251,10 @@ body {
   height: auto;
 }
 .player-1-controls {
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 20px;
   background-color: rgba(80,80,80,.7);
-  padding: 5px;
+  padding: 10px;
   color: white;
   position: absolute;
   top: 70px;
@@ -264,9 +262,10 @@ body {
   border-radius: 15px;
 }
 .player-2-controls {
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 20px;
   background-color: rgba(80,80,80,.7);
-  padding: 5px;
+  padding: 10px;
   color: white;
   position: absolute;
   top: 70px;
@@ -278,7 +277,7 @@ body {
   margin: 20px;
   bottom: 10px;
   left: 10px;
-  font-size: 25px;
+  font-size: 35px;
   color: yellow;
 }
 .player-2-name {
@@ -286,7 +285,7 @@ body {
   margin: 20px;
   bottom: 10px;
   right: 10px;
-  font-size: 25px;
+  font-size: 35px;
   color: yellow;
 }
 .end-screen {
