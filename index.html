@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Steve Fighter II</title>
   <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Bevan" rel="stylesheet">
-  <script src="js/jquery-3.3.1.min.js" type="text/javascript"
-  charset="utf-8" async defer></script>
-  <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+  <script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8" async
+    defer></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
   <div class="wrapper">
     <div class="landing-screen">
       <div class="world-on-fire">
         <center>
-        <img src="images/stevefighterlogo.png" id="logo">
+          <img src="images/stevefighterlogo.png" id="logo">
         </center>
         <div class="player-select">
           <!-- Begin All P1 Options -->
-          <div class = "player1-selection">
+          <div class="player1-selection">
             <!-- Begin P1 Form -->
             <div class="player1-form">
               <form id="player1-input">
@@ -33,12 +33,13 @@
             </div>
             <!-- End P1 Form -->
             <div class="controls player1-controls">
-              <p>a = left<br>d = right<br>e = punch<br>f = kick<!-- <br>q = block --></p>
-            <button class="new-challenger-btns" id="player1-reset">New Challenger</button>
+              <p>a = left<br>d = right<br>e = punch<br>f = kick
+                <!-- <br>q = block --></p>
+              <button class="new-challenger-btns" id="player1-reset">New Challenger</button>
             </div>
           </div>
           <!-- End All P1 Options -->
-            <button id="start-btn">Let's Kick Some Ass!</button>
+          <button id="start-btn">Let's Kick Some Ass!</button>
           <!-- Begin All P2 Options -->
           <div class="player2-selection">
             <!-- Begin P2 Form -->
@@ -51,8 +52,9 @@
             </div>
             <!-- End P2 Form -->
             <div class="controls player2-controls">
-              <p>l = left<br>' = right<br>o = punch<br>k = kick<!-- <br>[ = block --></p>
-            <button class="new-challenger-btns" id="player2-reset">New Challenger</button>
+              <p>l = left<br>' = right<br>o = punch<br>k = kick
+                <!-- <br>[ = block --></p>
+              <button class="new-challenger-btns" id="player2-reset">New Challenger</button>
             </div>
           </div>
           <!-- End All P2 Options -->
@@ -62,7 +64,8 @@
     </div>
     <div class="fight-screen">
       <div class="battle-arena">
-        <div class="player-1-hp"><!-- HP Remaining: -->
+        <div class="player-1-hp">
+          <!-- HP Remaining: -->
           <span id="p1-hp-span"></span>
         </div>
         <div class="player-1-hp-shadow"></div>
@@ -70,15 +73,18 @@
           <span class="ko">KO</span>
         </div>
         <div class="timer-box">99</div>
-        <div class="player-2-hp"><!-- HP Remaining: -->
+        <div class="player-2-hp">
+          <!-- HP Remaining: -->
           <span id="p2-hp-span"></span>
         </div>
         <div class="player-2-hp-shadow"></div>
         <div class="player-1-controls">
-          <p>a = left<br>d = right<br>e = punch<br>f = kick<!-- <br>q = block --></p>
+          <p>a = left<br>d = right<br>e = punch<br>f = kick
+            <!-- <br>q = block --></p>
         </div>
         <div class="player-2-controls">
-          <p>l = left<br>' = right<br>o = punch<br>k = kick<!-- <br>[ = block --></p>
+          <p>l = left<br>' = right<br>o = punch<br>k = kick
+            <!-- <br>[ = block --></p>
         </div>
         <!-- For Clickable Model, Testing, and Debugging Only! -->
         <!-- <button id="hit-player2">Hit Player 2</button>
@@ -116,4 +122,5 @@
   </div>
   <script src="js/main.js"></script>
 </body>
+
 </html>

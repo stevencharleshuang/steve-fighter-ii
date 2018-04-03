@@ -114,6 +114,13 @@ the landing page for new player name inputs.
 ## Additional Libraries
 jQuery: Used for DOM element targeting, DOM element creation and event listeners 
 
+## Code Snippet
+    function p1HPBar() {
+      // 350px is the initial width of the HPBar div
+      return 350 - (350 - ((p1HPVal * 350) / 101));
+    }
+This is the code that dynamically updates the size of the health bar based on damage taken by the player. I am proud of this piece of code because I conceived the logic and mathed my way through it myself.
+
 ## jQuery Discoveries
 on() - for event listeners
 css() - for dynamically changing elements
