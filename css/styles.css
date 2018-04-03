@@ -31,6 +31,16 @@ body {
   color: yellow;
   vertical-align: bottom;
 }
+#player1-name {
+  font-size: 25px;
+  opacity: 0.8;
+  font-family: 'VT323', monospace;
+}
+#player2-name {
+  font-size: 25px;
+  opacity: 0.8;
+  font-family: 'VT323', monospace;
+}
 #logo {
   position: relative;
   height: auto;
@@ -39,7 +49,16 @@ body {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%)
 }
-
+.controls {
+  position: absolute;
+  top: 300px;
+}
+.player1-controls {
+  left: 90px;
+}
+.player2-controls {
+  left: 540px;
+}
 #start-btn {
   font-family: 'VT323', monospace;
   font-size: 20px;
@@ -58,18 +77,16 @@ body {
 #start-btn:hover {
   background-color: #aaa;
   cursor: pointer;
-  animation: glow .3s linear .5s infinite alternate;
-}
-@keyframes glow {
-    0% {box-shadow: inset 0 0 0px #3cf;}
-    50% {box-shadow: inset 0 0 15px #3cf;}
-    100% {box-shadow: inset 0 0 30px #3cf;}
 }
 .player1-selection {
   margin: 20px;
   height: 400px;
   width: 250px;
   border-radius: 10px;
+  background-image: url('../images/r-win.gif');
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: cover;
   background-color: rgba(100,100,100,.7);
   display: inline-block;
   vertical-align: bottom;
@@ -79,13 +96,15 @@ body {
   height: 400px;
   width: 250px;
   border-radius: 10px;
+  background-image: url('../images/k-win.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: rgba(100,100,100,.7);
   display: inline-block;
   vertical-align: bottom;
 }
 .new-challenger-btns {
   position: relative;
-  top: 220px;
 }
 #player1-reset {}
 #player2-reset {}
@@ -118,27 +137,46 @@ body {
 .player-1 {
   position: absolute;
   /*display: inline-block;*/
-  background-color: blue;
+  /*background-color: blue;*/
   /*https://pixlanim8r.wordpress.com/tag/sprite-animation/*/
-  background: url('../images/Ryu-hdstance.gif') no-repeat;
-  background-size: 150px 300px;
-
+/*  background: url('../images/ryu.png') no-repeat;
+  background-size: 150px 300px;*/
+  background-image: url('../images/ryu.png');
+  background-size: 5400px;
+  /*background-position: -180px -460px*/;
+  animation: ryu-resting .8s steps(4) infinite;
   top: 300px;
   left: 100px;
-  height: 300px;
+  height: 290px;
   width: 150px;
+}
+@-webkit-keyframes ryu-resting {
+  from {
+    background-position-x: -10px;
+    background-position-y: -50px;
+  }
+  to {
+    background-position-x: -700px;
+    background-position-y: -50px;
+  }
 }
 .player-2 {
   position: absolute;
   /*display: inline-block;*/
-  background-color: green;
+  /*background-color: green;*/
   /*https://pixlanim8r.wordpress.com/tag/sprite-animation/*/
-  background: url('../images/Ken-hdstance.gif') no-repeat right;
-  background-size: 150px 300px;
+  background-image: url('../images/ken.png');
+  background-size: 1720px 2808px;
+  background-position: /*2150px -552px*/;
+  animation: ken-resting .8s steps(4) infinite;
   top: 300px;
   right: 550px;
-  height: 300px;
+  height: 290px;
   width: 150px;
+}
+@-webkit-keyframes ken-resting {
+  from {background-position: 1910px -275px;}
+  to {background-position: 2900px -275px;}
 }
 .player-1-hp {
   position: absolute;
@@ -295,22 +333,61 @@ button {
 button:hover {
   background-color: #aaa;
   cursor: pointer;
+  animation: glow  linear .5s infinite alternate;
+}
+@keyframes glow {
+    0% {box-shadow: inset 0 0 0px #fa3;}
+    50% {box-shadow: inset 0 0 15px #fa3;}
+    100% {box-shadow: inset 0 0 30px #fa3;}
+}
+#r-lose {
+  position: absolute;
+  height: 250px;
+  top: 350px;
+  left: 0;
+  visibility: hidden;
+}
+#r-win {
+  position: absolute;
+  height: 250px;
+  top: 350px;
+  left: 0;
+  border-radius: 15px;
+  visibility: hidden;
+}
+#k-lose {
+  position: absolute;
+  height: 250px;
+  top: 350px;
+  right: 0;
+  visibility: hidden;
+}
+#k-win {
+  position: absolute;
+  height: 250px;
+  top: 350px;
+  right: 0;
+  border-radius: 15px;
+  visibility: hidden;
+}
+.k-punch {
+  background-image: url('../images/k-punch.png');
 }
 /* Testing Only */
 #cheat-btn {
   position: relative;
   top: 50px;
-  /*visibility: hidden;*/
+  visibility: hidden;
 }
 #hit-player2 {
   position: absolute;
   top: 250px;
   left:100px;
-  /*visibility: hidden*/
+  visibility: hidden
 }
 #hit-player1 {
   position: absolute;
   top: 250px;
   right:100px;
-  /*visibility: hidden;*/
+  visibility: hidden;
 }

@@ -7,9 +7,9 @@ body {
   width:900px;
   background-color: beige;
   /*Default*/
-  visibility: visible;
+  /*visibility: visible;*/
   /*Testing*/
-  /*visibility: hidden;*/
+  visibility: hidden;
 }
 .start-button {
   height: 100px;
@@ -23,15 +23,20 @@ body {
   height:600px;
   width:900px;
   /*Default*/
-  visibility: hidden;
+  /*visibility: hidden;*/
   /*Testing*/
-  /*visibility: visible;*/
+  visibility: visible;
   overflow: hidden;
 }
 .blue-box {
   position: absolute;
   /*display: inline-block;*/
   background-color: blue;
+  margin: 0;
+  padding: 0;
+  background-image: url('../images/ryu.png');
+  background-size: 5000px;
+  background-position: 0px -20px;
   top: 300px;
   left: 100px;
   height: 300px;

@@ -1,6 +1,8 @@
 # Steve Fighter
 * [Steve Fighter - Bit Balloon](http://eager-blackwell-7636a3.bitballoon.com)
 * [Steve Fighter - Git Hub Pages](https://git.generalassemb.ly/pages/stevencharleshuang/project-1-game/)
+* [Presentation Slides (Speaker Notes Included)](https://docs.google.com/presentation/d/1P3_Wn4-xk00mPowt-cnCu-mRpIEM-Cow6rBtHqy_Gh4/edit?usp=sharing) 
+
 # Project Overview
 Day | Deliverable
 ------------ | -------------
@@ -10,20 +12,14 @@ Day 3 Thursday | Basic Clickable Model
 Day 4 Friday  | Working Prototype
 Day 5 Saturday | Final Working Project
 Day 6 Sunday | Bugs / Styling / Post MVP
-Day 7 Monday | Project Presentations
+Day 7 Monday | Bugs / Styling / Post MVP
+Day 8 Tuesday | Project Presentations
 
 ## Project Description
 
 "Steve Fighter" is a personal rendition of a classic multiplayer arena style 
 fighter. Two players face off against one another and use attacks to reduce the 
 opponent's Hit Points to zero. The first player to defeat the other wins!
-
-Example of collision detection without using HTML5 Canvas:
-* [Pure Javascript 2D Game - Speed Coding Tutorial](https://www.youtube.com/watch?v=Tk3YUimJtbY)
-* [Git Hub](https://github.com/Ishtmeet-Singh/Js_game)
-
-Use of vectors:
-* [Khan Academy - Vectors](https://www.khanacademy.org/computing/computer-programming/programming-natural-simulations/programming-vectors/a/intro-to-vectors)
 
 ## Wireframes
 * [Wireframe Image 01 - Whiteboard - General Overview](https://res.cloudinary.com/dk1cgfxkn/image/upload/v1522247701/GA%20Project%201/wireframe001.jpg)
@@ -92,41 +88,64 @@ the landing page for new player name inputs.
 
 
 ## Functional Components
-| Component | Priority | Estimated Time | Time Invetsted | Actual Time |
+| Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Hit Detection Logic | H | 4hrs | | |
-| Hit Point System Logic | H | 4hrs | | |
-| Character Development - Hit Detection | H | 5hrs | | |
-| Character Development - Hit Point System | H | 3hrs | | |
-| Landing Page Development - Player Name Input Form | H | 2hrs | | |
-| End Page User Interface - Reset Button | H | 1hrs | | |
-| Character Development - Controls | M | 3hrs | | |
-| Win Case Logic | M | 2hrs | | |
-| Character and Level Design - Base Visual | L | 1hrs | | |
-| Character and Level Design - Animation | L | 1hrs | | |
-| Landing Page Design | L | 2hrs | | |
-| End Page Design | L | 1hrs | | |
-| Sum Hours | | 29hrs | | |
+| Hit Detection Logic | H | 4hrs | 8hrs | 12hrs |
+| Hit Point System Logic | H | 4hrs | 5hrs | 4hrs |
+| Character Development - Hit Detection | H | 5hrs | 3hrs | 1hr |
+| Character Development - Hit Point System | H | 3hrs | 3hrs | 3hrs |
+| Landing Page Development - Player Name Input Form | H | 2hrs | 2hrs | 2hrs |
+| End Page User Interface - Reset Button | H | 1hr | 1hr | 1hr |
+| Character Development - Controls | M | 3hrs | 4hrs | 5hrs |
+| Win Case Logic | M | 2hrs | 1hr | 1hr |
+| Character and Level Design - Base Visual | L | 1hr | 1hr | 1hr |
+| Character and Level Design - Animation | L | 1hr | 2hrs | 2hrs |
+| Landing Page Design | L | 2hrs | 2hrs | 2hrs |
+| End Page Design | L | 1hr | 1hr | 1hr |
+| Sum Hours | | 29hrs | 33hrs | 35hrs |
 
 ## Helper Functions
-Helper functions should be generic enought that they can be reused in other applications. Use this section to document all helper functions that fall into this category.
 
 | Function | Description | 
 | --- | :---: |  
-| Capitalize | This will capitalize the first letter in a string | 
+| HitDetect() | Uses MDN's Colllision algorithm and getClientBoundingRect() to determine if two DOM elements have collided |
+| HPBar() |  Reduces the width of a DOM element proportionate to its initial value |
 
 ## Additional Libraries
- Use this section to list all supporting libraries and thier role in the project. 
+jQuery: Used for DOM element targeting, DOM element creation and event listeners 
 
 ## jQuery Discoveries
- Use this section to list some, but not all, of the jQuery methods and\or functionality discovered while working on this project.
+on() - for event listeners
+css() - for dynamically changing elements
+replaceWith() - for massive HTML codeblock recreation
+animate() - for div motion
 
 ## Change Log
- Use this section to document what changes were made and the reasoning behind those changes.  
+ Did not implement Character animations due to time constraints.
 
 ## Issues and Resolutions
- Use this section to list of all major issues encountered and their resolution.
+**ERROR**: Divs were able to intersect and then go through one another.                          
+**RESOLUTION**: Used getBoundingClientRect() to retrieve left and right coordinate information,
+then set a buffer between the two Divs so that one's left attribute could not exceed the other's
+right attribute and vice versa. 
 
-#### SAMPLE.....
-**ERROR**: app.js:34 Uncaught SyntaxError: Unexpected identifier                                
-**RESOLUTION**: Missing comma after first object in sources {} object
+**ERROR**: Divs were able to exceed the boundaries of the fight screen.                       
+**RESOLUTION**: Used getboundingClientRect() to retrieve the Div's left and right coordinate information and set logic so that the a given div's left or right property could not exceed the fight screen's left and right boundary.
+
+**ERROR**: Holding down an attack button caused an almost instantaneous depletion of opponent hit points.                           
+**RESOLUTION**: Used setTimeout to slow the rate of attacks being detected while a key was pressed down.
+
+## Sources
+Smooth Div Movement Controls Bound to Keypresses:
+* [Stack Overflow](https://stackoverflow.com/questions/7298507/move-element-with-keypress-multiple)
+
+2-D Collision Detection Links:
+* [MDN - 2-D Collision Detection Algorithm](https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection)
+* [MDN - getBoundingClientRect()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
+
+Image Sources:
+* [Ken PNG](https://davidwalsh.name/street-fighter?bcsi-ac-5b340027a7203c96=211D2BD000000108uqkkjutwcl80QiW6KkPOT7583goEAAAACAEAACvj0wAAjScAAgAAAPV5BQA=)
+* [Ken Win](https://vignette.wikia.nocookie.net/streetfighter/images/3/37/Ken-ssf2tv-portrait.gif/revision/latest?cb=20100717033005)
+* [Ryu Win](https://vignette.wikia.nocookie.net/streetfighter/images/f/ff/Ryu-portrait-turbo-revival.gif/revision/latest?cb=20100717032454)
+* [Ken Lose](https://vignette.wikia.nocookie.net/streetfighter/images/f/fd/Ken-hurt.gif/revision/latest?cb=20140419140821)
+* [Ryu Lose](https://vignette.wikia.nocookie.net/streetfighter/images/1/11/RYUlose.gif/revision/latest?cb=20140419140227)
