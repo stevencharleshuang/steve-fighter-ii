@@ -158,8 +158,12 @@ right attribute and vice versa.
 
 ## Unsolved Problems
 **Name Submission-New Challenger Bug**
+
 One set of unsolved problems are the name form bugs where submitting an empty box doesn't return a player as assignment, and where updating a challenger with the "new challenger" button will cause the form to reload the page on re-submission. 
+
+
 **No Blocks**
+
 Another unsolved problem was the issue of "blocking" attacks as a player control. When I was testing, if a player was holding down a key to be in a "blocking" state, the opponent would shut off that key being fired briefly enough for attacks to go through and still register. I believe that this is due largely to the nature of using keybindings for control and I would need more time to think of a work-around.
 
 ## Sources
