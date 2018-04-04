@@ -168,14 +168,14 @@ One set of unsolved problems are the name form bugs where submitting an empty bo
 Another unsolved problem was the issue of "blocking" attacks as a player control. When I was testing, if a player was holding down a key to be in a "blocking" state, the opponent would shut off that key being fired briefly enough for attacks to go through and still register. I believe that this is due largely to the nature of using keybindings for control and I would need more time to think of a work-around.
 
 ## Sources
-Smooth Div Movement Controls Bound to Keypresses:
+**Smooth Div Movement Controls Bound to Keypresses:**
 * [Stack Overflow](https://stackoverflow.com/questions/7298507/move-element-with-keypress-multiple)
 
-2-D Collision Detection Links:
+**2-D Collision Detection Links:**
 * [MDN - 2-D Collision Detection Algorithm](https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection)
 * [MDN - getBoundingClientRect()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
 
-Image Sources:
+**Image Sources:**
 * [Arena JPG](https://i.ytimg.com/vi/7Uk3S2Qti4g/maxresdefault.jpg)
 * [World-On-Fire GIF](https://media.tenor.com/images/265d42069be85a9192b3bb4ee72f5f71/tenor.gif)
 * [Ken PNG](https://davidwalsh.name/street-fighter?bcsi-ac-5b340027a7203c96=211D2BD000000108uqkkjutwcl80QiW6KkPOT7583goEAAAACAEAACvj0wAAjScAAgAAAPV5BQA=)
@@ -185,6 +185,6 @@ Image Sources:
 * [Ken Lose](https://vignette.wikia.nocookie.net/streetfighter/images/f/fd/Ken-hurt.gif/revision/latest?cb=20140419140821)
 * [Ryu Lose](https://vignette.wikia.nocookie.net/streetfighter/images/1/11/RYUlose.gif/revision/latest?cb=20140419140227)
 
-Music Source:
+**Background Music Source:**
 
 [Steve Moneymoney - "Paranormal Activity"](https://soundcloud.com/steve-moneymoney)
